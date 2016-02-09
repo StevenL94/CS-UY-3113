@@ -24,12 +24,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6D5A86AA19AE5C710066C1FD /* NYUCodebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYUCodebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D5A86AA19AE5C710066C1FD /* Homework 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Homework 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5A86AD19AE5C710066C1FD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6D5A86B019AE5C710066C1FD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		6D5A86B119AE5C710066C1FD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6D5A86B219AE5C710066C1FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		6D5A86B519AE5C710066C1FD /* NYUCodebase-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NYUCodebase-Info.plist"; sourceTree = "<group>"; };
+		6D5A86B519AE5C710066C1FD /* Homework 1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Homework 1-Info.plist"; sourceTree = "<group>"; };
 		6D5A86B719AE5C710066C1FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D5A86B919AE5C710066C1FD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6D5A86BD19AE5C710066C1FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -67,8 +67,8 @@
 		6D5A86A119AE5C710066C1FD = {
 			isa = PBXGroup;
 			children = (
-				6D5A86B319AE5C710066C1FD /* NYUCodebase */,
-				6D5A86D119AE5C710066C1FD /* NYUCodebaseTests */,
+				6D5A86B319AE5C710066C1FD /* Homework 1 */,
+				6D5A86D119AE5C710066C1FD /* Homework 1 Tests */,
 				6D5A86AC19AE5C710066C1FD /* Frameworks */,
 				6D5A86AB19AE5C710066C1FD /* Products */,
 			);
@@ -77,7 +77,7 @@
 		6D5A86AB19AE5C710066C1FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6D5A86AA19AE5C710066C1FD /* NYUCodebase.app */,
+				6D5A86AA19AE5C710066C1FD /* Homework 1.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,32 +104,32 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		6D5A86B319AE5C710066C1FD /* NYUCodebase */ = {
+		6D5A86B319AE5C710066C1FD /* Homework 1 */ = {
 			isa = PBXGroup;
 			children = (
 				6D5A86E119AE5CAA0066C1FD /* Code */,
 				6D5A86B419AE5C710066C1FD /* Supporting Files */,
 			);
-			path = NYUCodebase;
+			path = "Homework 1";
 			sourceTree = "<group>";
 		};
 		6D5A86B419AE5C710066C1FD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				6D5A86C519AE5C710066C1FD /* Images.xcassets */,
-				6D5A86B519AE5C710066C1FD /* NYUCodebase-Info.plist */,
+				6D5A86B519AE5C710066C1FD /* Homework 1-Info.plist */,
 				6D5A86B619AE5C710066C1FD /* InfoPlist.strings */,
 				6D5A86BC19AE5C710066C1FD /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6D5A86D119AE5C710066C1FD /* NYUCodebaseTests */ = {
+		6D5A86D119AE5C710066C1FD /* Homework 1 Tests */ = {
 			isa = PBXGroup;
 			children = (
 				6D5A86D219AE5C710066C1FD /* Supporting Files */,
 			);
-			path = NYUCodebaseTests;
+			path = "Homework 1 Tests";
 			sourceTree = "<group>";
 		};
 		6D5A86D219AE5C710066C1FD /* Supporting Files */ = {
@@ -155,14 +155,15 @@
 				6D5A86B919AE5C710066C1FD /* main.cpp */,
 			);
 			name = Code;
+			path = "../Homework 1";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6D5A86A919AE5C710066C1FD /* NYUCodebase */ = {
+		6D5A86A919AE5C710066C1FD /* Homework 1 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D5A86DB19AE5C710066C1FD /* Build configuration list for PBXNativeTarget "NYUCodebase" */;
+			buildConfigurationList = 6D5A86DB19AE5C710066C1FD /* Build configuration list for PBXNativeTarget "Homework 1" */;
 			buildPhases = (
 				6D5A86A619AE5C710066C1FD /* Sources */,
 				6D5A86A719AE5C710066C1FD /* Frameworks */,
@@ -172,9 +173,9 @@
 			);
 			dependencies = (
 			);
-			name = NYUCodebase;
+			name = "Homework 1";
 			productName = NYUCodebase;
-			productReference = 6D5A86AA19AE5C710066C1FD /* NYUCodebase.app */;
+			productReference = 6D5A86AA19AE5C710066C1FD /* Homework 1.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -185,9 +186,9 @@
 			attributes = {
 				CLASSPREFIX = NYUCB;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Ivan Safrin";
+				ORGANIZATIONNAME = "Steven Lee";
 			};
-			buildConfigurationList = 6D5A86A519AE5C710066C1FD /* Build configuration list for PBXProject "NYUCodebase" */;
+			buildConfigurationList = 6D5A86A519AE5C710066C1FD /* Build configuration list for PBXProject "Homework 1" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -200,7 +201,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6D5A86A919AE5C710066C1FD /* NYUCodebase */,
+				6D5A86A919AE5C710066C1FD /* Homework 1 */,
 			);
 		};
 /* End PBXProject section */
@@ -350,8 +351,9 @@
 					/Library/Frameworks/SDL2_image.framework/Versions/A/Headers,
 					/Library/Frameworks/SDL2.framework/Versions/A/Headers,
 				);
-				INFOPLIST_FILE = "NYUCodebase/NYUCodebase-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "$(SRCROOT)/Homework 1/Homework 1-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stevenlee.Homework-1";
+				PRODUCT_NAME = "Homework 1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -373,8 +375,9 @@
 					/Library/Frameworks/SDL2_image.framework/Versions/A/Headers,
 					/Library/Frameworks/SDL2.framework/Versions/A/Headers,
 				);
-				INFOPLIST_FILE = "NYUCodebase/NYUCodebase-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "$(SRCROOT)/Homework 1/Homework 1-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stevenlee.Homework-1";
+				PRODUCT_NAME = "Homework 1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -382,7 +385,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6D5A86A519AE5C710066C1FD /* Build configuration list for PBXProject "NYUCodebase" */ = {
+		6D5A86A519AE5C710066C1FD /* Build configuration list for PBXProject "Homework 1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D5A86D919AE5C710066C1FD /* Debug */,
@@ -391,7 +394,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D5A86DB19AE5C710066C1FD /* Build configuration list for PBXNativeTarget "NYUCodebase" */ = {
+		6D5A86DB19AE5C710066C1FD /* Build configuration list for PBXNativeTarget "Homework 1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D5A86DC19AE5C710066C1FD /* Debug */,
