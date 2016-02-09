@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 //    glEnable(GL_BLEND);
     glViewport(0, 0, 640, 360);
     ShaderProgram program(RESOURCE_FOLDER "vertex_textured.glsl", RESOURCE_FOLDER "fragment_textured.glsl");
-    GLuint texture = LoadTexture("rpgTile155.png");
+    GLuint texture = LoadTexture("");
     Matrix projectionMatrix;
     Matrix modelMatrix;
     Matrix viewMatrix;
