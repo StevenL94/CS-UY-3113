@@ -29,6 +29,7 @@ Matrix projectionMatrix;
 Matrix modelMatrix;
 Matrix viewMatrix;
 
+//Loads textures and creates a texture ID
 GLuint LoadTexture(const char *image_path) {
     SDL_Surface *surface = IMG_Load(image_path);
     GLuint textureID;
@@ -46,6 +47,7 @@ GLuint LoadTexture(const char *image_path) {
 }
 
 int main(int argc, char *argv[]) {
+//    Initialize SDL
     SDL_Init(SDL_INIT_VIDEO);
     displayWindow = SDL_CreateWindow("Homework 1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
     SDL_GLContext context = SDL_GL_CreateContext(displayWindow);
@@ -54,15 +56,20 @@ int main(int argc, char *argv[]) {
     glewInit();
 #endif
     
+//    Define shader program
     ShaderProgram program(RESOURCE_FOLDER "vertex_textured.glsl", RESOURCE_FOLDER "fragment_textured.glsl");
     glViewport(0, 0, 800, 600);
+    
+//    Load textures
     GLuint emoji = LoadTexture("emoji.png");
     GLuint alien = LoadTexture("p1_front.png");
     GLuint medal = LoadTexture("flat_medal6.png");
+//    Enable blending
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glUseProgram(program.programID);
     
+//    Initialize local variables
     float lastFrameTicks = 0.0f;
     float angle = 0.0f;
     float X,Y,moveX, moveY = 0.0;
@@ -75,14 +82,17 @@ int main(int argc, char *argv[]) {
                 done = true;
             }
         }
+//        Define matrixes
         program.setProjectionMatrix(projectionMatrix);
         program.setModelMatrix(modelMatrix);
         program.setViewMatrix(viewMatrix);
         
+//        Calculate elapsed time
         float ticks = (float)SDL_GetTicks()/1000.0f;
         float elapsed = ticks - lastFrameTicks;
         lastFrameTicks = ticks;
         
+//        Calculate angle based on elapsed time
         angle += elapsed;
         if (X < .35 && Y < .35) {
             X += elapsed/2;
@@ -93,27 +103,17 @@ int main(int argc, char *argv[]) {
             Y -= elapsed/2;
         }
         
+//        Initialize keyboard state
         const Uint8 *keys = SDL_GetKeyboardState(NULL);
         
+//        Clear and set color
         glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         
+//        Draw alien texture
 //        glActiveTexture(GL_TEXTURE1);
         modelMatrix.identity();
         modelMatrix.Scale(.2, .2, 1.0);
-        if(keys[SDL_SCANCODE_UP]) {
-            moveY += 1/elapsed;
-        }
-        else if (keys[SDL_SCANCODE_DOWN]) {
-            moveY -= 1/elapsed;
-        }
-        else if(keys[SDL_SCANCODE_RIGHT]) {
-            moveX += 1/elapsed;
-        }
-        else if(keys[SDL_SCANCODE_LEFT]) {
-            moveX -= 1/elapsed;
-        }
-        modelMatrix.Translate(moveX, moveY, 0);
         program.setModelMatrix(modelMatrix);
         glBindTexture(GL_TEXTURE_2D, alien);
         float vertices1[] = {-0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5};
@@ -127,23 +127,11 @@ int main(int argc, char *argv[]) {
         glDisableVertexAttribArray(program.positionAttribute);
         glDisableVertexAttribArray(program.texCoordAttribute);
         
+//        Draw medal texture
 //        glActiveTexture(GL_TEXTURE2);
         modelMatrix.identity();
         modelMatrix.Scale(.05, .05, 1.0);
         modelMatrix.Translate(0, -.95, 0);
-        if(keys[SDL_SCANCODE_UP]) {
-            moveY += 1/elapsed;
-        }
-        else if (keys[SDL_SCANCODE_DOWN]) {
-            moveY -= 1/elapsed;
-        }
-        else if(keys[SDL_SCANCODE_RIGHT]) {
-            moveX += 1/elapsed;
-        }
-        else if(keys[SDL_SCANCODE_LEFT]) {
-            moveX -= 1/elapsed;
-        }
-        modelMatrix.Translate(moveX, moveY, 0);
         program.setModelMatrix(modelMatrix);
         glBindTexture(GL_TEXTURE_2D, medal);
         float vertices2[] = {-0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5};
@@ -157,7 +145,8 @@ int main(int argc, char *argv[]) {
         glDisableVertexAttribArray(program.positionAttribute);
         glDisableVertexAttribArray(program.texCoordAttribute);
         
-        //        glActiveTexture(GL_TEXTURE0);
+//        Draw emoji texture
+//        glActiveTexture(GL_TEXTURE0);
         modelMatrix.identity();
         modelMatrix.Scale(X*2, Y*2, 1.0);
         modelMatrix.Rotate((angle*100.0f) * M_PI/180);
@@ -178,7 +167,6 @@ int main(int argc, char *argv[]) {
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glDisableVertexAttribArray(program.positionAttribute);
         glDisableVertexAttribArray(program.texCoordAttribute);
-        
         
         SDL_GL_SwapWindow(displayWindow);
     }
