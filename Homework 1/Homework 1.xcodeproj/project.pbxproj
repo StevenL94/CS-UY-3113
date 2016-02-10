@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		560B7E251C6AD069008D42E2 /* p1_front.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 560B7E241C6AD069008D42E2 /* p1_front.png */; };
+		560B7E271C6AD893008D42E2 /* flat_medal6.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 560B7E261C6AD893008D42E2 /* flat_medal6.png */; };
 		5647B4A71C69AE4900647F00 /* emoji.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5647B4A61C69AE4900647F00 /* emoji.png */; };
 		6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5A86AD19AE5C710066C1FD /* Cocoa.framework */; };
 		6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A86B619AE5C710066C1FD /* InfoPlist.strings */; };
@@ -31,6 +33,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				560B7E271C6AD893008D42E2 /* flat_medal6.png in CopyFiles */,
+				560B7E251C6AD069008D42E2 /* p1_front.png in CopyFiles */,
 				5647B4A71C69AE4900647F00 /* emoji.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -38,6 +42,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		560B7E241C6AD069008D42E2 /* p1_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1_front.png; sourceTree = "<group>"; };
+		560B7E261C6AD893008D42E2 /* flat_medal6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flat_medal6.png; sourceTree = "<group>"; };
 		5647B4A61C69AE4900647F00 /* emoji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emoji.png; sourceTree = "<group>"; };
 		6D5A86AA19AE5C710066C1FD /* Homework 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Homework 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5A86AD19AE5C710066C1FD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -82,6 +88,8 @@
 		6D5A86A119AE5C710066C1FD = {
 			isa = PBXGroup;
 			children = (
+				560B7E261C6AD893008D42E2 /* flat_medal6.png */,
+				560B7E241C6AD069008D42E2 /* p1_front.png */,
 				5647B4A61C69AE4900647F00 /* emoji.png */,
 				6D5A86B319AE5C710066C1FD /* Homework 1 */,
 				6D5A86D119AE5C710066C1FD /* Homework 1 Tests */,
