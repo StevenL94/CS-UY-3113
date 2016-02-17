@@ -58,47 +58,50 @@ void init() {
 
 void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program, bool paddle, bool ball, int padNum = 0) {
 //    Update modelMatrix
-    Matrix modelMatrix;
-    static float angle, X, Y = 0.0f;
+    Matrix model;
+    static float angle, leftX, leftY, rightX, rightY, ballX, ballY = 0.0f;
+    angle += elapsed;
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
     if (paddle) {
         if (padNum == 1) {
             if(keys[SDL_SCANCODE_W]) {
-                if (Y < .5) {
-                    Y += 1/elapsed;
+                if (leftY < .5) {
+                    leftY += 1/elapsed;
                 }
             }
             else if (keys[SDL_SCANCODE_S]) {
-                if (Y > -.5) {
-                    Y -= 1/elapsed;
+                if (leftY > -.5) {
+                    leftY -= 1/elapsed;
                 }
             }
-            modelMatrix.identity();
-            modelMatrix.Translate(X, Y, 0);
-            program.setModelMatrix(modelMatrix);
+            model.identity();
+            model.Translate(leftX, leftY, 0);
         }
-        if (padNum == 2) {
+        else if (padNum == 2){
             if(keys[SDL_SCANCODE_UP]) {
-                if (Y < .5) {
-                    Y += 1/elapsed;
+                if (rightY < .5) {
+                    rightY += 1/elapsed;
                 }
             }
             else if (keys[SDL_SCANCODE_DOWN]) {
-                if (Y > -.5) {
-                    Y -= 1/elapsed;
+                if (rightY > -.5) {
+                    rightY -= 1/elapsed;
                 }
             }
+            model.identity();
+            model.Translate(rightX, rightY, 0);
         }
-        modelMatrix.identity();
-        modelMatrix.Translate(X, Y, 0);
-        program.setModelMatrix(modelMatrix);
     }
-    else {
+    
+    if (ball) {
         if(keys[SDL_SCANCODE_SPACE]) {
-            modelMatrix.identity();
+            model.identity();
         }
-        program.setModelMatrix(modelMatrix);
+//        if (ballX < ) {
+//            <#statements#>
+//        }
     }
+    program.setModelMatrix(model);
 }
 
 void render(ShaderProgram& program,float vertices[], float texCoords[]) {
@@ -158,10 +161,13 @@ int main(int argc, char *argv[]) {
         
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+
         update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false, true);
         render(program, vertices, texCoords);
+//        Left Paddle
         update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, true, false, 1);
         render(program, vertices1, texCoords1);
+//        Right Paddle
         update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, true, false, 2);
         render(program, vertices2, texCoords2);
         SDL_GL_SwapWindow(displayWindow);
