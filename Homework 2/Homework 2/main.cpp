@@ -100,29 +100,45 @@ void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Mat
     if (ball) {
         if (newGame) {
             if (!collision) {
-                ballX += elapsed/2500;
-                ballY += elapsed/2500;
+                ballX += elapsed/1500;
+                ballY += elapsed/1500;
                 modelMatrix.Translate(ballX, ballY, 0);
                 if (ballX < -1 || ballX > 1) {
-                    collision = true;
+                    if (rightX == ballX) {
+                        collision = true;
+                    }
+                    newGame = false;
                 }
                 else if (ballY < -1 || ballY > 1 ) {
                     collision = true;
-                }
-                else {
-                    
                 }
             }
             else {
-                ballX -= elapsed/2500;
-                ballY -= elapsed/2500;
-                modelMatrix.Translate(ballX, ballY, 0);
+                ballX -= elapsed/1500;
+                ballY -= elapsed/1500;
+                modelMatrix.Translate(0, ballY, 0);
                 if (ballX < -1 || ballX > 1) {
-                    collision = false;
+                    if (leftX == ballX) {
+                        collision = false;
+                    }
+                    newGame = false;
                 }
                 else if (ballY < -1 || ballY > 1 ) {
                     collision = false;
                 }
+                
+            }
+        }
+        else {
+            if(keys[SDL_SCANCODE_SPACE]) {
+                modelMatrix.identity();
+                ballX = 0;
+                ballY = 0;
+                leftX = 0;
+                leftY = 0;
+                rightX = 0;
+                rightY = 0;
+                newGame = true;
             }
         }
     }
