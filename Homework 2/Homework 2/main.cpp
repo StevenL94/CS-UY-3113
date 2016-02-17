@@ -58,9 +58,13 @@ void init() {
 
 void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program, bool paddle, bool ball, int padNum = 0) {
 //    Update modelMatrix
-    Matrix model;
+    Matrix modelMatrix;
     static float angle, leftX, leftY, rightX, rightY, ballX, ballY = 0.0f;
+    static bool collision = false;
+    static bool newGame = true;
+    float padLength = -0.5;
     angle += elapsed;
+    
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
     if (paddle) {
         if (padNum == 1) {
@@ -74,8 +78,8 @@ void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Mat
                     leftY -= 1/elapsed;
                 }
             }
-            model.identity();
-            model.Translate(leftX, leftY, 0);
+            modelMatrix.identity();
+            modelMatrix.Translate(leftX, leftY, 0);
         }
         else if (padNum == 2){
             if(keys[SDL_SCANCODE_UP]) {
@@ -88,24 +92,44 @@ void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Mat
                     rightY -= 1/elapsed;
                 }
             }
-            model.identity();
-            model.Translate(rightX, rightY, 0);
+            modelMatrix.identity();
+            modelMatrix.Translate(rightX, rightY, 0);
         }
     }
     
     if (ball) {
-        if(keys[SDL_SCANCODE_SPACE]) {
-            model.identity();
+        if (newGame) {
+            if (!collision) {
+                ballX += elapsed/2500;
+                ballY += elapsed/2500;
+                modelMatrix.Translate(ballX, ballY, 0);
+                if (ballX < -1 || ballX > 1) {
+                    collision = true;
+                }
+                else if (ballY < -1 || ballY > 1 ) {
+                    collision = true;
+                }
+                else {
+                    
+                }
+            }
+            else {
+                ballX -= elapsed/2500;
+                ballY -= elapsed/2500;
+                modelMatrix.Translate(ballX, ballY, 0);
+                if (ballX < -1 || ballX > 1) {
+                    collision = false;
+                }
+                else if (ballY < -1 || ballY > 1 ) {
+                    collision = false;
+                }
+            }
         }
-//        if (ballX < ) {
-//            <#statements#>
-//        }
     }
-    program.setModelMatrix(model);
+    program.setModelMatrix(modelMatrix);
 }
 
 void render(ShaderProgram& program,float vertices[], float texCoords[]) {
-//    glBindTexture(GL_TEXTURE_2D, textureID);
     glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, vertices);
     glEnableVertexAttribArray(program.positionAttribute);
     glVertexAttribPointer(program.texCoordAttribute, 2, GL_FLOAT, false, 0, texCoords);
@@ -129,9 +153,6 @@ int main(int argc, char *argv[]) {
     init();
     ShaderProgram program(RESOURCE_FOLDER "vertex_textured.glsl", RESOURCE_FOLDER "fragment_textured.glsl");
     glUseProgram(program.programID);
-//    GLuint pong = LoadTexture("pong.png");
-//    GLuint pong1 = LoadTexture("pong.png");
-//    GLuint pong2 = LoadTexture("pong.png");
     float lastFrameTicks = 0.0f;
     //    Ball
     float vertices[] = {-0.05, -0.05, 0.05, -0.05, 0.05, 0.05, -0.05, -0.05, 0.05, 0.05, -0.05, 0.05};

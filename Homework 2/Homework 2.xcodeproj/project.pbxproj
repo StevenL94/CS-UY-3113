@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5624A0321C71565600644C36 /* Pong.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5624A0311C71565600644C36 /* Pong.png */; };
 		6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5A86AD19AE5C710066C1FD /* Cocoa.framework */; };
 		6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A86B619AE5C710066C1FD /* InfoPlist.strings */; };
 		6D5A86BA19AE5C710066C1FD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D5A86B919AE5C710066C1FD /* main.cpp */; };
@@ -31,14 +30,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				5624A0321C71565600644C36 /* Pong.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5624A0311C71565600644C36 /* Pong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pong.png; sourceTree = "<group>"; };
 		6D5A86AA19AE5C710066C1FD /* Homework 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Homework 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5A86AD19AE5C710066C1FD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6D5A86B019AE5C710066C1FD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -82,7 +79,6 @@
 		6D5A86A119AE5C710066C1FD = {
 			isa = PBXGroup;
 			children = (
-				5624A0311C71565600644C36 /* Pong.png */,
 				6D5A86B319AE5C710066C1FD /* Homework 2 */,
 				6D5A86D119AE5C710066C1FD /* Homework 1 Tests */,
 				6D5A86AC19AE5C710066C1FD /* Frameworks */,
