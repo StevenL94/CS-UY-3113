@@ -45,75 +45,100 @@ GLuint LoadTexture(const char *image_path) {
 void init() {
 //    Initialize SDL
     SDL_Init(SDL_INIT_VIDEO);
-    displayWindow = SDL_CreateWindow("Homework 2 - Pong", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
+    displayWindow = SDL_CreateWindow("Homework 2 - Pong", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
     SDL_GLContext context = SDL_GL_CreateContext(displayWindow);
     SDL_GL_MakeCurrent(displayWindow, context);
 #ifdef _WINDOWS
     glewInit();
 #endif
-    glViewport(0, 0, 800, 600);
+    glViewport(0, 0, 640, 480);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
-void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& modelMatrix, Matrix& viewMatrix, ShaderProgram& program) {
+void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program, bool paddle, bool ball, int padNum = 0) {
 //    Update modelMatrix
-//    static float angle, X, Y = 0.0f;
-//    const Uint8 *keys = SDL_GetKeyboardState(NULL);
-//    angle += elapsed;
-//    if (X < .35 && Y < .35) {
-//        X += elapsed/2;
-//        Y += elapsed/2;
-//    }
-//    else if (X < -.35 && Y < -.35) {
-//        X -= elapsed/2;
-//        Y -= elapsed/2;
-//    }
-//    program.setProjectionMatrix(projectionMatrix);
-//    program.setModelMatrix(modelMatrix);
-//    program.setViewMatrix(viewMatrix);
-//    modelMatrix.identity();
-//    modelMatrix.Scale(X*2, Y*2, 1.0);
-//    modelMatrix.Rotate((angle*100.0f) * M_PI/180);
-//    if(keys[SDL_SCANCODE_SPACE]) {
-//        modelMatrix.identity();
-//        modelMatrix.Scale(X*2, Y*2, 1.0);
-//    }
-//    modelMatrix.Translate(X*1.5, Y*1.5, 0);
-//    program.setModelMatrix(modelMatrix);
+    Matrix modelMatrix;
+    static float angle, X, Y = 0.0f;
+    const Uint8 *keys = SDL_GetKeyboardState(NULL);
+    if (paddle) {
+        if (padNum == 1) {
+            if(keys[SDL_SCANCODE_W]) {
+                if (Y < .5) {
+                    Y += 1/elapsed;
+                }
+            }
+            else if (keys[SDL_SCANCODE_S]) {
+                if (Y > -.5) {
+                    Y -= 1/elapsed;
+                }
+            }
+            modelMatrix.identity();
+            modelMatrix.Translate(X, Y, 0);
+            program.setModelMatrix(modelMatrix);
+        }
+        if (padNum == 2) {
+            if(keys[SDL_SCANCODE_UP]) {
+                if (Y < .5) {
+                    Y += 1/elapsed;
+                }
+            }
+            else if (keys[SDL_SCANCODE_DOWN]) {
+                if (Y > -.5) {
+                    Y -= 1/elapsed;
+                }
+            }
+        }
+        modelMatrix.identity();
+        modelMatrix.Translate(X, Y, 0);
+        program.setModelMatrix(modelMatrix);
+    }
+    else {
+        if(keys[SDL_SCANCODE_SPACE]) {
+            modelMatrix.identity();
+        }
+        program.setModelMatrix(modelMatrix);
+    }
 }
 
-void render(ShaderProgram& program, GLuint& textureID) {
-    glClear(GL_COLOR_BUFFER_BIT);
-    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-    glBindTexture(GL_TEXTURE_2D, textureID);
-    float vertices[] = {-0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5};
-    float texCoords[] = {0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0};
+void render(ShaderProgram& program,float vertices[], float texCoords[]) {
+//    glBindTexture(GL_TEXTURE_2D, textureID);
     glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, vertices);
     glEnableVertexAttribArray(program.positionAttribute);
     glVertexAttribPointer(program.texCoordAttribute, 2, GL_FLOAT, false, 0, texCoords);
     glEnableVertexAttribArray(program.texCoordAttribute);
-    glEnable(GL_TEXTURE_2D);
     glDrawArrays(GL_TRIANGLES, 0, 6);
-    glDisableVertexAttribArray(program.positionAttribute);
-    glDisableVertexAttribArray(program.texCoordAttribute);
-    SDL_GL_SwapWindow(displayWindow);
 }
 
 void cleanup() {
     SDL_Quit();
 }
 
-//void processEvent(Matrix& modelMatrix) {
-//    const Uint8 *keys = SDL_GetKeyboardState(NULL);
-//    if(keys[SDL_SCANCODE_SPACE]) {
-//        modelMatrix.identity();
-//        modelMatrix.Scale(X*2, Y*2, 1.0);
-//    }
-//}
+void processEvents(Matrix& projectionMatrix, Matrix& modelMatrix, Matrix& viewMatrix, ShaderProgram& program, GLuint& textureID) {
+    
+}
 
-void proc(Matrix& projectionMatrix, Matrix& modelMatrix, Matrix& viewMatrix, ShaderProgram& program, GLuint& textureID) {
+int main(int argc, char *argv[]) {
+    Matrix projectionMatrix;
+    Matrix modelMatrix;
+    Matrix viewMatrix;
+    
+    init();
+    ShaderProgram program(RESOURCE_FOLDER "vertex_textured.glsl", RESOURCE_FOLDER "fragment_textured.glsl");
+    glUseProgram(program.programID);
+//    GLuint pong = LoadTexture("pong.png");
+//    GLuint pong1 = LoadTexture("pong.png");
+//    GLuint pong2 = LoadTexture("pong.png");
     float lastFrameTicks = 0.0f;
+    //    Ball
+    float vertices[] = {-0.05, -0.05, 0.05, -0.05, 0.05, 0.05, -0.05, -0.05, 0.05, 0.05, -0.05, 0.05};
+    float texCoords[] = {0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0};
+    //    Left Paddle
+    float vertices1[] = {-0.9, -0.4, -0.8, -0.4, -0.8, 0.4, -0.9, -0.4, -0.8, 0.4, -0.9, 0.4};
+    float texCoords1[] = {0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0};
+    //    Right Paddle
+    float vertices2[] = {0.9, -0.4, 0.8, -0.4, 0.8, 0.4, 0.9, -0.4, 0.8, 0.4, 0.9, 0.4};
+    float texCoords2[] = {0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0};
     SDL_Event event;
     bool done = false;
     
@@ -126,26 +151,21 @@ void proc(Matrix& projectionMatrix, Matrix& modelMatrix, Matrix& viewMatrix, Sha
         program.setProjectionMatrix(projectionMatrix);
         program.setModelMatrix(modelMatrix);
         program.setViewMatrix(viewMatrix);
-        float ticks = (float)SDL_GetTicks()/1000.0f;
+        
+        float ticks = (float)SDL_GetTicks();
         float elapsed = ticks - lastFrameTicks;
         lastFrameTicks = ticks;
+        
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-        update(lastFrameTicks, elapsed, projectionMatrix, modelMatrix, viewMatrix, program);
-        render(program, textureID);
+        update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false, true);
+        render(program, vertices, texCoords);
+        update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, true, false, 1);
+        render(program, vertices1, texCoords1);
+        update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, true, false, 2);
+        render(program, vertices2, texCoords2);
+        SDL_GL_SwapWindow(displayWindow);
     }
     cleanup();
-}
-
-int main(int argc, char *argv[]) {
-    Matrix projectionMatrix;
-    Matrix modelMatrix;
-    Matrix viewMatrix;
-    
-    init();
-    ShaderProgram program(RESOURCE_FOLDER "vertex_textured.glsl", RESOURCE_FOLDER "fragment_textured.glsl");
-    glUseProgram(program.programID);
-//    GLuint pong = LoadTexture("pong.png");
-//    proc(projectionMatrix, modelMatrix, viewMatrix, program, pong);
     return 0;
 }
