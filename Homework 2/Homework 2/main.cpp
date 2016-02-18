@@ -59,10 +59,14 @@ void init() {
 void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program, bool paddle, bool ball, int padNum = 0) {
 //    Update modelMatrix
     Matrix modelMatrix;
-    static float angle, leftX, leftY, rightX, rightY, ballX, ballY = 0.0f;
+    static float angle, leftY, rightY, ballX, ballY, padLeftBtm, padRightBtm, padLeftTop, padRightTop, ballBtm, ballTop = 0.0f;
     static bool collision = false;
     static bool newGame = true;
-    float padLength = -0.5;
+    float rightX = 0.85;
+    float leftX = -0.85;
+    float height = 0.8;
+    float width = 0.1;
+    float ballWidth = 0.1;
     angle += elapsed;
     
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
@@ -79,7 +83,7 @@ void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Mat
                 }
             }
             modelMatrix.identity();
-            modelMatrix.Translate(leftX, leftY, 0);
+            modelMatrix.Translate(0, leftY, 0);
         }
         else if (padNum == 2){
             if(keys[SDL_SCANCODE_UP]) {
@@ -93,40 +97,61 @@ void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Mat
                 }
             }
             modelMatrix.identity();
-            modelMatrix.Translate(rightX, rightY, 0);
+            modelMatrix.Translate(0, rightY, 0);
         }
     }
+    padLeftTop = leftY + height/2;
+    padLeftBtm = leftY - height/2;
+    padRightTop = rightY + height/2;
+    padRightBtm = rightY - height/2;
+    ballTop = ballY + ballWidth/2;
+    ballBtm = ballY - ballWidth/2;
     
     if (ball) {
         if (newGame) {
             if (!collision) {
-                ballX += elapsed/1500;
-                ballY += elapsed/1500;
-                modelMatrix.Translate(ballX, ballY, 0);
-                if (ballX < -1 || ballX > 1) {
-                    if (rightX == ballX) {
+                ballX += (elapsed/1500);
+                if (ballX >= (rightX - width/2)) {
+                    if ((ballBtm <= padRightTop) && (ballTop >= padRightBtm) && ((ballX - ballWidth/2) <= ((rightX + width/2)))  && ((ballX + ballWidth/2) >= ((rightX - width/2)))) {
+                        ballY += elapsed/1500;
                         collision = true;
                     }
-                    newGame = false;
+                    else {
+                        modelMatrix.Translate(ballX, ballY, 0);
+                        if (ballX < -1 || ballX > 1) {
+                            newGame = false;
+                        }
+                        else if (ballY < -1 || ballY > 1 ) {
+                            ballY -= elapsed/1500;
+                            collision = true;
+                        }
+                    }
                 }
-                else if (ballY < -1 || ballY > 1 ) {
-                    collision = true;
+                else {
+                    modelMatrix.Translate(ballX, ballY, 0);
                 }
             }
             else {
-                ballX -= elapsed/1500;
-                ballY -= elapsed/1500;
-                modelMatrix.Translate(0, ballY, 0);
-                if (ballX < -1 || ballX > 1) {
-                    if (leftX == ballX) {
+                ballX -= (elapsed/1500);
+                if (ballX < (leftX + width/2)) {
+                    if ((ballBtm <= padLeftTop) && (ballTop >= padLeftBtm) && ((ballX - ballWidth/2) <= ((leftX + width/2)))  && ((ballX + ballWidth/2) >= ((leftX - width/2)))) {
+                        ballY -= elapsed/1500;
                         collision = false;
                     }
-                    newGame = false;
+                    else {
+                        modelMatrix.Translate(ballX, 0, 0);
+                        if (ballX < -1 || ballX > 1) {
+                            newGame = false;
+                        }
+                        else if (ballY < -1 || ballY > 1 ) {
+                            ballY -= elapsed/1500;
+                            collision = false;
+                        }
+                    }
                 }
-                else if (ballY < -1 || ballY > 1 ) {
-                    collision = false;
+                else {
+                    modelMatrix.Translate(ballX, 0, 0);
                 }
-                
             }
         }
         else {
@@ -169,6 +194,7 @@ int main(int argc, char *argv[]) {
     init();
     ShaderProgram program(RESOURCE_FOLDER "vertex_textured.glsl", RESOURCE_FOLDER "fragment_textured.glsl");
     glUseProgram(program.programID);
+    GLuint white = LoadTexture("white.png");
     float lastFrameTicks = 0.0f;
     //    Ball
     float vertices[] = {-0.05, -0.05, 0.05, -0.05, 0.05, 0.05, -0.05, -0.05, 0.05, 0.05, -0.05, 0.05};
@@ -197,8 +223,8 @@ int main(int argc, char *argv[]) {
         lastFrameTicks = ticks;
         
         glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-
+//        glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+//        Ball
         update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false, true);
         render(program, vertices, texCoords);
 //        Left Paddle
