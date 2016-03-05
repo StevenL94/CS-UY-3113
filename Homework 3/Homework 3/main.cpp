@@ -88,12 +88,17 @@ int main(int argc, char *argv[]) {
     SDL_Event event;
     bool done = false;
     
-//    GLuint spriteSheetTexture = LoadTexture("characters_3.png");
 /*    Sprites courtesy of http://gooperblooper22.deviantart.com/art/Space-Invaders-Sprite-Sheet-135338373  */
     GLuint spriteSheetTexture = LoadTexture("space_invaders_sprite_sheet_by_gooperblooper22.png");
     GLuint white = LoadTexture("white.png");
     GLuint textTexture = LoadTexture("font1.png");
     int score = 0;
+    int currentIndex = 0;
+    const int numFrames = 2;
+    float animation[] = {(74.0f/617.0f),(107.0f/617.0f)};
+//    float Y[] = {(225.0f/2035.0f),(225.0f/2035.0f)};
+    float animationElapsed = 0.0f;
+    float framesPerSecond = 0.0004f;
     
     while (!done) {
         while (SDL_PollEvent(&event)) {
@@ -109,28 +114,27 @@ int main(int argc, char *argv[]) {
         float elapsed = ticks - lastFrameTicks;
         lastFrameTicks = ticks;
         
+        animationElapsed += 1/elapsed;
+        if(animationElapsed > 1.0/framesPerSecond) {
+            currentIndex++;
+            animationElapsed = 0.0;
+            if(currentIndex > numFrames-1) {
+                currentIndex = 0;
+            }
+        }
+        
         glClear(GL_COLOR_BUFFER_BIT);
-//        glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
         
         score = ticks;
         
         Entity text;
-//        Player cannon;
-//        Player alien2;
         text.DrawText(program, textTexture, "Score:" + std::to_string(score), 0.075, 0);
-//        Bullet bullet;
-//        bullet.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program);
-//        bullet.render(program, white);
         Player cannon(spriteSheetTexture, 277.0f/617.0f, 227.0f/2035.0f, 26.0f/617.0f, 17.0f/2035.0f, 0.05);
         cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white);
         cannon.draw(program);
-//        cannon.setTexCoords(texCoords, 12);
-//        cannon.setVertices(vertices, 12);
-//        cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white);
-//        cannon.render(program, spriteSheetTexture);
-//        SheetSprite sprite(spriteSheetTexture, u, v, spriteWidth, spriteHeight, 0.2);
-//        sprite.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program);
-//        sprite.render(program);
+        SheetSprite alien(spriteSheetTexture, animation[currentIndex], (225.0f/2035.0f), 22.0f/617.0f, 16.0f/2035.0f, 0.05);
+        alien.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program);
+        alien.draw(program);
         SDL_GL_SwapWindow(displayWindow);
     }
     cleanup();

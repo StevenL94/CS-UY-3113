@@ -11,19 +11,26 @@
 void Entity::update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program) {
     //    Update modelMatrix
     Matrix modelMatrix;
-    const Uint8 *keys = SDL_GetKeyboardState(NULL);
-    if (keys[SDL_SCANCODE_A]) {
-        if (x > -0.89) {
-            x -= elapsed;
+    static bool wall = false;
+    if (y > -0.65) {
+        if (x > -1.85 && !wall) {
+            x -= elapsed/2;
         }
-    }
-    else if(keys[SDL_SCANCODE_D]) {
-        if (x < 0.89) {
-            x += elapsed;
+        if (x <= -1.85) {
+            wall = true;
+            y -= elapsed*4;
+        }
+        if (x < 1.85 && wall) {
+            x += elapsed/2;
+        }
+        if (x >= 1.85) {
+            wall = false;
+            y -= elapsed*4;
         }
     }
     modelMatrix.identity();
-    modelMatrix.Translate(x, 0, 0);
+    modelMatrix.Scale(0.5, 2, 0);
+    modelMatrix.Translate(x, y, 0);
     program.setModelMatrix(modelMatrix);
 }
 
