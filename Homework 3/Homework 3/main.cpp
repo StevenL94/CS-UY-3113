@@ -2,7 +2,7 @@
 //  main.cpp
 //  Homework 3
 //
-//  Created by Steven Lee on 2/8/16.
+//  Created by Steven Lee on 3/1/16.
 //  Copyright © 2016 Steven Lee. All rights reserved.
 //
 
@@ -14,8 +14,13 @@
 #include <SDL_image.h>
 
 #include <math.h>
+#include <vector>
+#include <string>
 #include "ShaderProgram.h"
 #include "Matrix.h"
+#include "SheetSprite.hpp"
+#include "Bullet.hpp"
+#include "Player.hpp"
 
 #ifdef _WINDOWS
 #define RESOURCE_FOLDER ""
@@ -56,21 +61,6 @@ void init() {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
-void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program) {
-//    Update modelMatrix
-    Matrix modelMatrix;
-    static bool collision = false;
-    program.setModelMatrix(modelMatrix);
-}
-
-void render(ShaderProgram& program,float vertices[], float texCoords[]) {
-    glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, vertices);
-    glEnableVertexAttribArray(program.positionAttribute);
-    glVertexAttribPointer(program.texCoordAttribute, 2, GL_FLOAT, false, 0, texCoords);
-    glEnableVertexAttribArray(program.texCoordAttribute);
-    glDrawArrays(GL_TRIANGLES, 0, 6);
-}
-
 void cleanup() {
     SDL_Quit();
 }
@@ -90,10 +80,19 @@ int main(int argc, char *argv[]) {
 
     float lastFrameTicks = 0.0f;
 
-    float vertices[] = {-0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5};
+//    float vertices[] = {-0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5};
+//    float texCoords[] = {0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0};
+//    float vertices[] = {-0.09, -0.09, 0.09, -0.09, 0.09, 0.09, -0.09, -0.09, 0.09, 0.09, -0.09, 0.09};
+    float vertices[] = {-0.09, -0.9, 0.09, -0.9, 0.09, -0.72, -0.09, -0.9, 0.09, -0.72, -0.09, -0.72};
     float texCoords[] = {0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0};
     SDL_Event event;
     bool done = false;
+    
+//    GLuint spriteSheetTexture = LoadTexture("characters_3.png");
+    GLuint spriteSheetTexture = LoadTexture("space_invaders_sprite_sheet_by_gooperblooper22.png");
+    GLuint white = LoadTexture("white.png");
+    GLuint textTexture = LoadTexture("font1.png");
+    int score = 0;
     
     while (!done) {
         while (SDL_PollEvent(&event)) {
@@ -110,10 +109,27 @@ int main(int argc, char *argv[]) {
         lastFrameTicks = ticks;
         
         glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+//        glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
         
-        update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program);
-        render(program, vertices, texCoords);
+        score = ticks;
+        
+        Entity text;
+//        Player cannon;
+//        Player alien2;
+        text.DrawText(program, textTexture, "Score:" + std::to_string(score), 0.075, 0);
+//        Bullet bullet;
+//        bullet.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program);
+//        bullet.render(program, white);
+        Player cannon(spriteSheetTexture, 277.0f/617.0f, 227.0f/2035.0f, 26.0f/617.0f, 17.0f/2035.0f, 0.05);
+        cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white);
+        cannon.draw(program);
+//        cannon.setTexCoords(texCoords, 12);
+//        cannon.setVertices(vertices, 12);
+//        cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white);
+//        cannon.render(program, spriteSheetTexture);
+//        SheetSprite sprite(spriteSheetTexture, u, v, spriteWidth, spriteHeight, 0.2);
+//        sprite.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program);
+//        sprite.render(program);
         SDL_GL_SwapWindow(displayWindow);
     }
     cleanup();

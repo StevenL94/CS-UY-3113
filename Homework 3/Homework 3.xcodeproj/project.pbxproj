@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		561B8F881C8A75C1002F9C26 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 561B8F861C8A75C1002F9C26 /* Player.cpp */; };
+		561B8F8A1C8A8EA0002F9C26 /* space_invaders_sprite_sheet_by_gooperblooper22.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 561B8F891C8A8EA0002F9C26 /* space_invaders_sprite_sheet_by_gooperblooper22.png */; };
+		562631C71C8949C30087F789 /* font1.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 562631C61C8949C30087F789 /* font1.png */; };
+		562631CB1C894E2E0087F789 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 562631C91C894E2E0087F789 /* Entity.cpp */; };
+		562631CE1C8950130087F789 /* SheetSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 562631CC1C8950130087F789 /* SheetSprite.cpp */; };
+		562631D11C89525E0087F789 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 562631CF1C89525E0087F789 /* Bullet.cpp */; };
+		562631D51C895B7D0087F789 /* white.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 562631D41C895B7D0087F789 /* white.png */; };
 		6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5A86AD19AE5C710066C1FD /* Cocoa.framework */; };
 		6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A86B619AE5C710066C1FD /* InfoPlist.strings */; };
 		6D5A86BA19AE5C710066C1FD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D5A86B919AE5C710066C1FD /* main.cpp */; };
@@ -30,12 +37,26 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				561B8F8A1C8A8EA0002F9C26 /* space_invaders_sprite_sheet_by_gooperblooper22.png in CopyFiles */,
+				562631D51C895B7D0087F789 /* white.png in CopyFiles */,
+				562631C71C8949C30087F789 /* font1.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		561B8F861C8A75C1002F9C26 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		561B8F871C8A75C1002F9C26 /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		561B8F891C8A8EA0002F9C26 /* space_invaders_sprite_sheet_by_gooperblooper22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = space_invaders_sprite_sheet_by_gooperblooper22.png; path = "Homework 3/space_invaders_sprite_sheet_by_gooperblooper22.png"; sourceTree = "<group>"; };
+		562631C61C8949C30087F789 /* font1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = font1.png; path = "Homework 3/font1.png"; sourceTree = "<group>"; };
+		562631C91C894E2E0087F789 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
+		562631CA1C894E2E0087F789 /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
+		562631CC1C8950130087F789 /* SheetSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SheetSprite.cpp; sourceTree = "<group>"; };
+		562631CD1C8950130087F789 /* SheetSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SheetSprite.hpp; sourceTree = "<group>"; };
+		562631CF1C89525E0087F789 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
+		562631D01C89525E0087F789 /* Bullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bullet.hpp; sourceTree = "<group>"; };
+		562631D41C895B7D0087F789 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = white.png; path = "../Homework 2/Homework 2/white.png"; sourceTree = "<group>"; };
 		6D5A86AA19AE5C710066C1FD /* Homework 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Homework 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5A86AD19AE5C710066C1FD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6D5A86B019AE5C710066C1FD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -79,6 +100,9 @@
 		6D5A86A119AE5C710066C1FD = {
 			isa = PBXGroup;
 			children = (
+				561B8F891C8A8EA0002F9C26 /* space_invaders_sprite_sheet_by_gooperblooper22.png */,
+				562631D41C895B7D0087F789 /* white.png */,
+				562631C61C8949C30087F789 /* font1.png */,
 				6D5A86B319AE5C710066C1FD /* Homework 3 */,
 				6D5A86D119AE5C710066C1FD /* Homework 3 Tests */,
 				6D5A86AC19AE5C710066C1FD /* Frameworks */,
@@ -166,6 +190,14 @@
 				6DEF23BF1B96CC2600BCE792 /* ShaderProgram.h */,
 				6DEF23C01B96CC2600BCE792 /* vertex.glsl */,
 				6D5A86B919AE5C710066C1FD /* main.cpp */,
+				561B8F861C8A75C1002F9C26 /* Player.cpp */,
+				561B8F871C8A75C1002F9C26 /* Player.hpp */,
+				562631C91C894E2E0087F789 /* Entity.cpp */,
+				562631CA1C894E2E0087F789 /* Entity.hpp */,
+				562631CC1C8950130087F789 /* SheetSprite.cpp */,
+				562631CD1C8950130087F789 /* SheetSprite.hpp */,
+				562631CF1C89525E0087F789 /* Bullet.cpp */,
+				562631D01C89525E0087F789 /* Bullet.hpp */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -241,6 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				562631CB1C894E2E0087F789 /* Entity.cpp in Sources */,
+				561B8F881C8A75C1002F9C26 /* Player.cpp in Sources */,
+				562631D11C89525E0087F789 /* Bullet.cpp in Sources */,
+				562631CE1C8950130087F789 /* SheetSprite.cpp in Sources */,
 				6DEF23C31B96CC2600BCE792 /* ShaderProgram.cpp in Sources */,
 				6DEF23C21B96CC2600BCE792 /* Matrix.cpp in Sources */,
 				6D5A86BA19AE5C710066C1FD /* main.cpp in Sources */,
