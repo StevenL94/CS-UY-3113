@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		560B7E231C6A9303008D42E2 /* p1_stand.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 560B7E221C6A9303008D42E2 /* p1_stand.png */; };
+		56B075361C88F21300116EB3 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B075351C88F21300116EB3 /* SDL2_mixer.framework */; };
+		56D627821C73D53E0062524A /* font1.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56D627811C73D53E0062524A /* font1.png */; };
 		56D89B661C715C8A00C47339 /* characters_3.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56D89B651C715C8A00C47339 /* characters_3.png */; };
-		56D89B681C71687100C47339 /* text.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56D89B671C71687100C47339 /* text.png */; };
 		56D89B6A1C716B3F00C47339 /* thickfont.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56D89B691C716B3F00C47339 /* thickfont.png */; };
 		6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5A86AD19AE5C710066C1FD /* Cocoa.framework */; };
 		6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A86B619AE5C710066C1FD /* InfoPlist.strings */; };
@@ -34,8 +35,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				56D627821C73D53E0062524A /* font1.png in CopyFiles */,
 				56D89B6A1C716B3F00C47339 /* thickfont.png in CopyFiles */,
-				56D89B681C71687100C47339 /* text.png in CopyFiles */,
 				56D89B661C715C8A00C47339 /* characters_3.png in CopyFiles */,
 				560B7E231C6A9303008D42E2 /* p1_stand.png in CopyFiles */,
 			);
@@ -45,8 +46,10 @@
 
 /* Begin PBXFileReference section */
 		560B7E221C6A9303008D42E2 /* p1_stand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1_stand.png; sourceTree = "<group>"; };
+		56B075331C88F1F600116EB3 /* Library */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Library; path = ../../../../../../Library; sourceTree = "<group>"; };
+		56B075351C88F21300116EB3 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
+		56D627811C73D53E0062524A /* font1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font1.png; sourceTree = "<group>"; };
 		56D89B651C715C8A00C47339 /* characters_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = characters_3.png; sourceTree = "<group>"; };
-		56D89B671C71687100C47339 /* text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text.png; sourceTree = "<group>"; };
 		56D89B691C716B3F00C47339 /* thickfont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thickfont.png; sourceTree = "<group>"; };
 		6D5A86AA19AE5C710066C1FD /* NYUCodebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYUCodebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5A86AD19AE5C710066C1FD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -78,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56B075361C88F21300116EB3 /* SDL2_mixer.framework in Frameworks */,
 				6D5AC2D019AE6280004CB1BF /* OpenGL.framework in Frameworks */,
 				6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */,
 				6D5A86E319AE5CD10066C1FD /* SDL2.framework in Frameworks */,
@@ -91,8 +95,8 @@
 		6D5A86A119AE5C710066C1FD = {
 			isa = PBXGroup;
 			children = (
+				56D627811C73D53E0062524A /* font1.png */,
 				56D89B691C716B3F00C47339 /* thickfont.png */,
-				56D89B671C71687100C47339 /* text.png */,
 				56D89B651C715C8A00C47339 /* characters_3.png */,
 				560B7E221C6A9303008D42E2 /* p1_stand.png */,
 				6D5A86B319AE5C710066C1FD /* NYUCodebase */,
@@ -113,6 +117,8 @@
 		6D5A86AC19AE5C710066C1FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56B075351C88F21300116EB3 /* SDL2_mixer.framework */,
+				56B075331C88F1F600116EB3 /* Library */,
 				6D5AC2D119AE6A1E004CB1BF /* SDL2_image.framework */,
 				6D5AC2CF19AE6280004CB1BF /* OpenGL.framework */,
 				6D5A86E219AE5CD10066C1FD /* SDL2.framework */,

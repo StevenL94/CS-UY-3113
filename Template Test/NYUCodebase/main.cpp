@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 
 #include "ShaderProgram.h"
 #include "Matrix.h"
@@ -114,14 +115,14 @@ int main(int argc, char *argv[]) {
     const int runAnimation[] = {16,17,18,19,20};
     const int numFrames = 5;
     float animationElapsed = 0.0f;
-    float framesPerSecond = 60.0f;
+    float framesPerSecond = 15.0f;
     int currentIndex = 0;
     unsigned score1, score2 = 0;
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glViewport(0, 0, 640, 360);
     ShaderProgram program(RESOURCE_FOLDER "vertex_textured.glsl", RESOURCE_FOLDER "fragment_textured.glsl");
-    GLuint text = LoadTexture("text.png");
+    GLuint text = LoadTexture("font1.png");
     GLuint texture = LoadTexture("characters_3.png");
     Matrix projectionMatrix;
     Matrix modelMatrix;
@@ -149,6 +150,12 @@ int main(int argc, char *argv[]) {
                 else if (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE){
                     done = true;
                 }
+            }
+            else if(event.type == SDL_MOUSEMOTION) {
+                float unitX = (((float)event.motion.x / 640.0f) * 3.554f ) - 1.777f;
+                float unitY = (((float)(360-event.motion.y) / 360.0f) * 2.0f ) - 1.0f;
+                modelMatrix.identity();
+                modelMatrix.Translate(unitX, unitY, 0);
             }
 //            else if (event.type == SDL_MOUSEMOTION) {
 //            float unitX = (((float)event.motion.x / 650.f)*3.554);
@@ -195,12 +202,9 @@ int main(int argc, char *argv[]) {
         program.setViewMatrix(viewMatrix);
         
         modelMatrix.identity();
-        DrawText(&program, text, "Hello World!", 0.15, 0);
-        
-        modelMatrix.identity();
         modelMatrix.Translate(X, Y, 0);
         glBindTexture(GL_TEXTURE_2D, texture);
-        animationElapsed += elapsed;
+        animationElapsed += 1/elapsed;
         if(animationElapsed > 1.0/framesPerSecond) {
             currentIndex++;
             animationElapsed = 0.0;
@@ -209,6 +213,10 @@ int main(int argc, char *argv[]) {
             }
         }
         DrawSpriteSheetSprite(&program, runAnimation[currentIndex], spriteCountX, spriteCountY);
+        
+//        modelMatrix.identity();
+        DrawText(&program, text, "  Test", 0.2, 0);
+//        modelMatrix.Translate(-1,1, 0);
         
 //        DrawSpriteSheetSprite(&program, index, spriteCountX, spriteCountY);
 //        modelMatrix.identity();
