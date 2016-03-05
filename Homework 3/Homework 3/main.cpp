@@ -89,6 +89,7 @@ int main(int argc, char *argv[]) {
     bool done = false;
     
 //    GLuint spriteSheetTexture = LoadTexture("characters_3.png");
+/*    Sprites courtesy of http://gooperblooper22.deviantart.com/art/Space-Invaders-Sprite-Sheet-135338373  */
     GLuint spriteSheetTexture = LoadTexture("space_invaders_sprite_sheet_by_gooperblooper22.png");
     GLuint white = LoadTexture("white.png");
     GLuint textTexture = LoadTexture("font1.png");
