@@ -20,7 +20,7 @@ class Player : public SheetSprite {
     
 public:
     Player(unsigned int textureID, float u, float v, float width, float height, float size);
-    void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program, GLuint textureID);
+    void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program, GLuint textureID, Entity& ent);
     void shootBullet();
 };
 

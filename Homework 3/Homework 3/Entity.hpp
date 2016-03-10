@@ -21,11 +21,12 @@ public:
     float x, y;
     float vertices[12];
     float texCoords[12];
-    void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program);
+    bool display;
+    void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program, bool stat);
     void render(ShaderProgram& program, GLuint textureID);
     void setVertices(float arr[], size_t size);
     void setTexCoords(float arr[], size_t size);
-    void DrawText(ShaderProgram& program, int fontTexture, std::string text, float size, float spacing);
+    void DrawText(ShaderProgram& program, int fontTexture, std::string text, float size, float spacing, float t_x, float t_y);
 };
 
 #endif /* Entity_hpp */

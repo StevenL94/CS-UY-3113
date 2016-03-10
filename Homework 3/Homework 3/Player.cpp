@@ -11,9 +11,11 @@
 Player::Player(unsigned int textureID, float u, float v, float width, float height, float size) : SheetSprite(textureID, u, v, width, height, size) {
 }
 
-void Player::update(float &lastFrameTicks, float &elapsed, Matrix &projectionMatrix, Matrix &viewMatrix, ShaderProgram &program, GLuint textureID) {
+void Player::update(float &lastFrameTicks, float &elapsed, Matrix &projectionMatrix, Matrix &viewMatrix, ShaderProgram &program, GLuint textureID, Entity& ent) {
     //    Update modelMatrix
     Matrix modelMatrix;
+    static Bullet bullet(x/2);
+    static bool pressed = false;
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
     if (keys[SDL_SCANCODE_A]) {
         if (x > -1.85) {
@@ -31,12 +33,18 @@ void Player::update(float &lastFrameTicks, float &elapsed, Matrix &projectionMat
 //        b.render(program, textureID);
 //    }
     if (keys[SDL_SCANCODE_SPACE]) {
-        static Bullet bullet(x/2);
+        pressed = true;
+    }
+    if (pressed) {
         if (bullet.displayBullet(1.6)) {
+            pressed = false;
             bullet = *new Bullet(x/2);
         }
         bullet.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program);
         bullet.render(program, textureID);
+    }
+    if ((ent.y - 0.00786241/2 <= bullet.y + 0.01/2) && (ent.y + 0.00786241/2 >= bullet.y - 0.01/2) && ((bullet.x - 0.01/2) <= ((ent.x + 0.0356564/2)))  && ((bullet.x + 0.01/2) >= ((ent.x - 0.0356564/2)))){
+        std::cout << "Target Hit" << std::endl;
     }
     modelMatrix.identity();
     modelMatrix.Scale(0.5, 2, 0);
@@ -47,7 +55,7 @@ void Player::update(float &lastFrameTicks, float &elapsed, Matrix &projectionMat
 void Player::shootBullet() {
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
     if (keys[SDL_SCANCODE_SPACE]) {
-        Bullet bullet(x);
+        Bullet bullet(x/2);
         bullets.push_back(bullet);
     }
 //    Bullet newBullet;

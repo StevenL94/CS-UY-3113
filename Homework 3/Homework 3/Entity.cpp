@@ -8,30 +8,37 @@
 
 #include "Entity.hpp"
 
-void Entity::update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program) {
+void Entity::update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program, bool stat) {
     //    Update modelMatrix
     Matrix modelMatrix;
     static bool wall = false;
-    if (y > -0.65) {
-        if (x > -1.85 && !wall) {
-            x -= elapsed/2;
-        }
-        if (x <= -1.85) {
-            wall = true;
-            y -= elapsed*4;
-        }
-        if (x < 1.85 && wall) {
-            x += elapsed/2;
-        }
-        if (x >= 1.85) {
-            wall = false;
-            y -= elapsed*4;
-        }
+    if (stat) {
+        modelMatrix.identity();
+        modelMatrix.Scale(0.5, 2, 0);
+        program.setModelMatrix(modelMatrix);
     }
-    modelMatrix.identity();
-    modelMatrix.Scale(0.5, 2, 0);
-    modelMatrix.Translate(x, y, 0);
-    program.setModelMatrix(modelMatrix);
+    else {
+        if (y >= -0.65) {
+            if (x > -1.85 && !wall) {
+                x -= elapsed/2;
+            }
+            if (x <= -1.85) {
+                wall = true;
+                y -= elapsed*2;
+            }
+            if (x < 1.85 && wall) {
+                x += elapsed/2;
+            }
+            if (x >= 1.85) {
+                wall = false;
+                y -= elapsed*4;
+            }
+        }
+        modelMatrix.identity();
+        modelMatrix.Scale(0.5, 2, 0);
+        modelMatrix.Translate(x, y+0.4, 0);
+        program.setModelMatrix(modelMatrix);
+    }
 }
 
 void Entity::render(ShaderProgram& program, GLuint textureID) {
@@ -59,7 +66,7 @@ void Entity::setTexCoords(float arr[], size_t size) {
     }
 }
 
-void Entity::DrawText(ShaderProgram& program, int fontTexture, std::string text, float size, float spacing) {
+void Entity::DrawText(ShaderProgram& program, int fontTexture, std::string text, float size, float spacing, float t_x, float t_y) {
     float texture_size = 1.0/16.0f;
     std::vector<float> vertexData;
     std::vector<float> texCoordData;
@@ -82,8 +89,7 @@ void Entity::DrawText(ShaderProgram& program, int fontTexture, std::string text,
             texture_x + texture_size, texture_y,
             texture_x, texture_y + texture_size,
         }); }
-    modelMatrix.Translate(-0.23
-                          , 0.9, 0);
+    modelMatrix.Translate(t_x, t_y, 0);
     program.setModelMatrix(modelMatrix);
     glUseProgram(program.programID);
     glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, vertexData.data());
