@@ -14,6 +14,9 @@
 		562631CE1C8950130087F789 /* SheetSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 562631CC1C8950130087F789 /* SheetSprite.cpp */; };
 		562631D11C89525E0087F789 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 562631CF1C89525E0087F789 /* Bullet.cpp */; };
 		562631D51C895B7D0087F789 /* white.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 562631D41C895B7D0087F789 /* white.png */; };
+		5643E5AF1C913AAF0009721C /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5643E5AE1C913AAF0009721C /* SDL2_mixer.framework */; };
+		5643E5BD1C9142980009721C /* 157439__nengisuls__misslie-1.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5643E5BC1C9142980009721C /* 157439__nengisuls__misslie-1.wav */; };
+		56F079E41C92661F00A6A5A4 /* bgm.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F079E31C92661F00A6A5A4 /* bgm.mp3 */; };
 		6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5A86AD19AE5C710066C1FD /* Cocoa.framework */; };
 		6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A86B619AE5C710066C1FD /* InfoPlist.strings */; };
 		6D5A86BA19AE5C710066C1FD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D5A86B919AE5C710066C1FD /* main.cpp */; };
@@ -37,6 +40,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				56F079E41C92661F00A6A5A4 /* bgm.mp3 in CopyFiles */,
+				5643E5BD1C9142980009721C /* 157439__nengisuls__misslie-1.wav in CopyFiles */,
 				561B8F8A1C8A8EA0002F9C26 /* space_invaders_sprite_sheet_by_gooperblooper22.png in CopyFiles */,
 				562631D51C895B7D0087F789 /* white.png in CopyFiles */,
 				562631C71C8949C30087F789 /* font1.png in CopyFiles */,
@@ -57,6 +62,9 @@
 		562631CF1C89525E0087F789 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
 		562631D01C89525E0087F789 /* Bullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bullet.hpp; sourceTree = "<group>"; };
 		562631D41C895B7D0087F789 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = white.png; path = "../Homework 2/Homework 2/white.png"; sourceTree = "<group>"; };
+		5643E5AE1C913AAF0009721C /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
+		5643E5BC1C9142980009721C /* 157439__nengisuls__misslie-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "157439__nengisuls__misslie-1.wav"; path = "Homework 3/157439__nengisuls__misslie-1.wav"; sourceTree = "<group>"; };
+		56F079E31C92661F00A6A5A4 /* bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bgm.mp3; path = "Homework 3/bgm.mp3"; sourceTree = "<group>"; };
 		6D5A86AA19AE5C710066C1FD /* Homework 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Homework 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5A86AD19AE5C710066C1FD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6D5A86B019AE5C710066C1FD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -88,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D5AC2D019AE6280004CB1BF /* OpenGL.framework in Frameworks */,
+				5643E5AF1C913AAF0009721C /* SDL2_mixer.framework in Frameworks */,
 				6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */,
 				6D5A86E319AE5CD10066C1FD /* SDL2.framework in Frameworks */,
 				6D5AC2D219AE6A1E004CB1BF /* SDL2_image.framework in Frameworks */,
@@ -100,6 +109,8 @@
 		6D5A86A119AE5C710066C1FD = {
 			isa = PBXGroup;
 			children = (
+				56F079E31C92661F00A6A5A4 /* bgm.mp3 */,
+				5643E5BC1C9142980009721C /* 157439__nengisuls__misslie-1.wav */,
 				561B8F891C8A8EA0002F9C26 /* space_invaders_sprite_sheet_by_gooperblooper22.png */,
 				562631D41C895B7D0087F789 /* white.png */,
 				562631C61C8949C30087F789 /* font1.png */,
@@ -121,6 +132,7 @@
 		6D5A86AC19AE5C710066C1FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5643E5AE1C913AAF0009721C /* SDL2_mixer.framework */,
 				6D5AC2D119AE6A1E004CB1BF /* SDL2_image.framework */,
 				6D5AC2CF19AE6280004CB1BF /* OpenGL.framework */,
 				6D5A86E219AE5CD10066C1FD /* SDL2.framework */,
@@ -400,6 +412,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/Library/Frameworks/SDL2_image.framework/Versions/A/Headers,
 					/Library/Frameworks/SDL2.framework/Versions/A/Headers,
+					/Library/Frameworks/SDL2_mixer.framework/Versions/A/Headers/,
 				);
 				INFOPLIST_FILE = "Homework 3/Homework 3-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stevenlee.Homework-3";
@@ -424,6 +437,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/Library/Frameworks/SDL2_image.framework/Versions/A/Headers,
 					/Library/Frameworks/SDL2.framework/Versions/A/Headers,
+					/Library/Frameworks/SDL2_mixer.framework/Versions/A/Headers/,
 				);
 				INFOPLIST_FILE = "Homework 3/Homework 3-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stevenlee.Homework-3";

@@ -12,6 +12,7 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 
 #include <math.h>
 #include <vector>
@@ -84,6 +85,7 @@ int main(int argc, char *argv[]) {
 //    float vertices[] = {-0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5};
 //    float texCoords[] = {0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0};
 //    float vertices[] = {-0.09, -0.09, 0.09, -0.09, 0.09, 0.09, -0.09, -0.09, 0.09, 0.09, -0.09, 0.09};
+    Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 4096 );
     SDL_Event event;
     bool done = false;
     
@@ -91,6 +93,8 @@ int main(int argc, char *argv[]) {
     GLuint spriteSheetTexture = LoadTexture("space_invaders_sprite_sheet_by_gooperblooper22.png");
     GLuint white = LoadTexture("white.png");
     GLuint textTexture = LoadTexture("font1.png");
+    Mix_Music *bgm = Mix_LoadMUS("bgm.mp3");
+    Mix_Chunk *missile = Mix_LoadWAV("157439__nengisuls__misslie-1.wav");
     bool pressed = false;
     int score = 0;
     int currentIndex = 0;
@@ -138,6 +142,9 @@ int main(int argc, char *argv[]) {
             case STATE_MAIN_MENU:
                 menu.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, true);
                 menu.draw(program);
+                if (!Mix_PlayingMusic()) {
+                    Mix_PlayMusic(bgm, -1);
+                }
                 if (keys[SDL_SCANCODE_RETURN]) {
                     state++;
                 }
@@ -149,6 +156,10 @@ int main(int argc, char *argv[]) {
                 cannon.draw(program);
                 alien.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false);
                 alien.draw(program);
+                if (keys[SDL_SCANCODE_SPACE]) {
+                    Mix_PlayChannel( -1, missile, 0);
+                    Mix_VolumeChunk(missile, 15);
+                }
                 if (keys[SDL_SCANCODE_ESCAPE] && (state == 1)) {
                     pressed = true;
                     state++;
@@ -156,6 +167,9 @@ int main(int argc, char *argv[]) {
                 
                 break;
             case STATE_PAUSE:
+                if (Mix_PlayingMusic()) {
+                    Mix_PausedMusic();
+                }
                 text.DrawText(program, textTexture, "Paused", 0.1, 0, -0.23, 0);
                 if (keys[SDL_SCANCODE_ESCAPE] && pressed) {
                     pressed = false;
@@ -166,6 +180,9 @@ int main(int argc, char *argv[]) {
         }
         SDL_GL_SwapWindow(displayWindow);
     }
+    Mix_FreeMusic(bgm);
+    Mix_FreeChunk(missile);
+    Mix_Quit();
     cleanup();
     return 0;
 }
