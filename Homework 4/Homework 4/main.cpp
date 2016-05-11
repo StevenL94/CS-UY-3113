@@ -15,6 +15,9 @@
 #include <SDL_mixer.h>
 
 #include <math.h>
+#include <fstream>
+#include <iostream>
+#include <sstream>
 #include <vector>
 #include <string>
 #include "ShaderProgram.h"
@@ -52,7 +55,7 @@ GLuint LoadTexture(const char *image_path) {
 void init() {
 //    Initialize SDL
     SDL_Init(SDL_INIT_VIDEO);
-    displayWindow = SDL_CreateWindow("Homework 4 - Space Invaders", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
+    displayWindow = SDL_CreateWindow("Homework 4 - Platformer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
     SDL_GLContext context = SDL_GL_CreateContext(displayWindow);
     SDL_GL_MakeCurrent(displayWindow, context);
 #ifdef _WINDOWS
@@ -90,11 +93,11 @@ int main(int argc, char *argv[]) {
     bool done = false;
     
 /*    Sprites courtesy of http://gooperblooper22.deviantart.com/art/Space-Invaders-Sprite-Sheet-135338373  */
-    GLuint spriteSheetTexture = LoadTexture("space_invaders_sprite_sheet_by_gooperblooper22.png");
-    GLuint white = LoadTexture("white.png");
-    GLuint textTexture = LoadTexture("font1.png");
-    Mix_Music *bgm = Mix_LoadMUS("bgm.mp3");
-    Mix_Chunk *missile = Mix_LoadWAV("157439__nengisuls__misslie-1.wav");
+//    GLuint spriteSheetTexture = LoadTexture("space_invaders_sprite_sheet_by_gooperblooper22.png");
+//    GLuint white = LoadTexture("white.png");
+//    GLuint textTexture = LoadTexture("font1.png");
+//    Mix_Music *bgm = Mix_LoadMUS("bgm.mp3");
+//    Mix_Chunk *missile = Mix_LoadWAV("157439__nengisuls__misslie-1.wav");
     bool pressed = false;
     int score = 0;
     int currentIndex = 0;
@@ -103,7 +106,7 @@ int main(int argc, char *argv[]) {
     float animation[] = {(74.0f/617.0f),(107.0f/617.0f)};
     float animationElapsed = 0.0f;
     float framesPerSecond = 0.0004f;
-    std::vector<SheetSprite> aliens;
+//    std::vector<SheetSprite> aliens;
     
     while (!done) {
         while (SDL_PollEvent(&event)) {
@@ -131,58 +134,58 @@ int main(int argc, char *argv[]) {
         glClear(GL_COLOR_BUFFER_BIT);
         
         score = ticks;
-        SheetSprite menu(spriteSheetTexture, 160.0f/617.0f, 1.0f/2035.0f, 250.0f/617.0f, 171.0f/2035.0f, 0.5);
-        Entity text;
-        Player cannon(spriteSheetTexture, 277.0f/617.0f, 227.0f/2035.0f, 26.0f/617.0f, 17.0f/2035.0f, 0.05);
-        SheetSprite alien(spriteSheetTexture, animation[currentIndex], (225.0f/2035.0f), 22.0f/617.0f, 16.0f/2035.0f, 0.05);
+//        SheetSprite menu(spriteSheetTexture, 160.0f/617.0f, 1.0f/2035.0f, 250.0f/617.0f, 171.0f/2035.0f, 0.5);
+//        Entity text;
+//        Player cannon(spriteSheetTexture, 277.0f/617.0f, 227.0f/2035.0f, 26.0f/617.0f, 17.0f/2035.0f, 0.05);
+//        SheetSprite alien(spriteSheetTexture, animation[currentIndex], (225.0f/2035.0f), 22.0f/617.0f, 16.0f/2035.0f, 0.05);
         
         const Uint8 *keys = SDL_GetKeyboardState(NULL);
         
         switch (state) {
             case STATE_MAIN_MENU:
-                menu.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, true);
-                menu.draw(program);
-                if (!Mix_PlayingMusic()) {
-                    Mix_PlayMusic(bgm, -1);
-                }
-                if (keys[SDL_SCANCODE_RETURN]) {
-                    state++;
-                }
+//                menu.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, true);
+//                menu.draw(program);
+//                if (!Mix_PlayingMusic()) {
+//                    Mix_PlayMusic(bgm, -1);
+//                }
+//                if (keys[SDL_SCANCODE_RETURN]) {
+//                    state++;
+//                }
                 break;
                 
             case STATE_GAME_LEVEL:
-                text.DrawText(program, textTexture, "Score:" + std::to_string(score), 0.075, 0, -0.23, 0.9);
-                cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien);
-                cannon.draw(program);
-                alien.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false);
-                alien.draw(program);
-                if (keys[SDL_SCANCODE_SPACE]) {
-                    Mix_PlayChannel( -1, missile, 0);
-                    Mix_VolumeChunk(missile, 15);
-                }
-                if (keys[SDL_SCANCODE_ESCAPE] && (state == 1)) {
-                    pressed = true;
-                    state++;
-                }
+//                text.DrawText(program, textTexture, "Score:" + std::to_string(score), 0.075, 0, -0.23, 0.9);
+//                cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien);
+//                cannon.draw(program);
+//                alien.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false);
+//                alien.draw(program);
+//                if (keys[SDL_SCANCODE_SPACE]) {
+//                    Mix_PlayChannel( -1, missile, 0);
+//                    Mix_VolumeChunk(missile, 15);
+//                }
+//                if (keys[SDL_SCANCODE_ESCAPE] && (state == 1)) {
+//                    pressed = true;
+//                    state++;
+//                }
                 
                 break;
             case STATE_PAUSE:
-                if (Mix_PlayingMusic()) {
-                    Mix_PausedMusic();
-                }
-                text.DrawText(program, textTexture, "Paused", 0.1, 0, -0.23, 0);
-                if (keys[SDL_SCANCODE_ESCAPE] && pressed) {
-                    pressed = false;
-                    state--;
-                }
+//                if (Mix_PlayingMusic()) {
+//                    Mix_PausedMusic();
+//                }
+//                text.DrawText(program, textTexture, "Paused", 0.1, 0, -0.23, 0);
+//                if (keys[SDL_SCANCODE_ESCAPE] && pressed) {
+//                    pressed = false;
+//                    state--;
+//                }
                 break;
                 
         }
         SDL_GL_SwapWindow(displayWindow);
     }
-    Mix_FreeMusic(bgm);
-    Mix_FreeChunk(missile);
-    Mix_Quit();
+//    Mix_FreeMusic(bgm);
+//    Mix_FreeChunk(missile);
+//    Mix_Quit();
     cleanup();
     return 0;
 }

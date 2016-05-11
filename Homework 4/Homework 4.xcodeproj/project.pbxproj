@@ -12,6 +12,8 @@
 		562631CE1C8950130087F789 /* SheetSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 562631CC1C8950130087F789 /* SheetSprite.cpp */; };
 		562631D11C89525E0087F789 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 562631CF1C89525E0087F789 /* Bullet.cpp */; };
 		5643E5AF1C913AAF0009721C /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5643E5AE1C913AAF0009721C /* SDL2_mixer.framework */; };
+		56C11EAA1CAB78C0006BC5F9 /* arne_sprites.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56C11EA81CAB78C0006BC5F9 /* arne_sprites.png */; };
+		56C11EAB1CAB78C0006BC5F9 /* platformer_level.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56C11EA91CAB78C0006BC5F9 /* platformer_level.txt */; };
 		6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5A86AD19AE5C710066C1FD /* Cocoa.framework */; };
 		6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A86B619AE5C710066C1FD /* InfoPlist.strings */; };
 		6D5A86BA19AE5C710066C1FD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D5A86B919AE5C710066C1FD /* main.cpp */; };
@@ -35,6 +37,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				56C11EAA1CAB78C0006BC5F9 /* arne_sprites.png in CopyFiles */,
+				56C11EAB1CAB78C0006BC5F9 /* platformer_level.txt in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +54,8 @@
 		562631CF1C89525E0087F789 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
 		562631D01C89525E0087F789 /* Bullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bullet.hpp; sourceTree = "<group>"; };
 		5643E5AE1C913AAF0009721C /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
+		56C11EA81CAB78C0006BC5F9 /* arne_sprites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arne_sprites.png; path = "Homework 4/arne_sprites.png"; sourceTree = "<group>"; };
+		56C11EA91CAB78C0006BC5F9 /* platformer_level.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = platformer_level.txt; path = "Homework 4/platformer_level.txt"; sourceTree = "<group>"; };
 		6D5A86AA19AE5C710066C1FD /* Homework 4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Homework 4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5A86AD19AE5C710066C1FD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6D5A86B019AE5C710066C1FD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -94,8 +100,10 @@
 		6D5A86A119AE5C710066C1FD = {
 			isa = PBXGroup;
 			children = (
+				56C11EA81CAB78C0006BC5F9 /* arne_sprites.png */,
+				56C11EA91CAB78C0006BC5F9 /* platformer_level.txt */,
 				6D5A86B319AE5C710066C1FD /* Homework 4 */,
-				6D5A86D119AE5C710066C1FD /* Homework 3 Tests */,
+				6D5A86D119AE5C710066C1FD /* Homework 4 Tests */,
 				6D5A86AC19AE5C710066C1FD /* Frameworks */,
 				6D5A86AB19AE5C710066C1FD /* Products */,
 			);
@@ -152,12 +160,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6D5A86D119AE5C710066C1FD /* Homework 3 Tests */ = {
+		6D5A86D119AE5C710066C1FD /* Homework 4 Tests */ = {
 			isa = PBXGroup;
 			children = (
 				6D5A86D219AE5C710066C1FD /* Supporting Files */,
 			);
-			name = "Homework 3 Tests";
+			name = "Homework 4 Tests";
 			path = "Homework 1 Tests";
 			sourceTree = "<group>";
 		};

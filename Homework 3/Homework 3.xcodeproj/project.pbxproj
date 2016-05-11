@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		560B4DD81CD86801002F7804 /* white.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 560B4DD71CD86801002F7804 /* white.png */; };
 		561B8F881C8A75C1002F9C26 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 561B8F861C8A75C1002F9C26 /* Player.cpp */; };
 		561B8F8A1C8A8EA0002F9C26 /* space_invaders_sprite_sheet_by_gooperblooper22.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 561B8F891C8A8EA0002F9C26 /* space_invaders_sprite_sheet_by_gooperblooper22.png */; };
 		562631C71C8949C30087F789 /* font1.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 562631C61C8949C30087F789 /* font1.png */; };
 		562631CB1C894E2E0087F789 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 562631C91C894E2E0087F789 /* Entity.cpp */; };
 		562631CE1C8950130087F789 /* SheetSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 562631CC1C8950130087F789 /* SheetSprite.cpp */; };
 		562631D11C89525E0087F789 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 562631CF1C89525E0087F789 /* Bullet.cpp */; };
-		562631D51C895B7D0087F789 /* white.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 562631D41C895B7D0087F789 /* white.png */; };
 		5643E5AF1C913AAF0009721C /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5643E5AE1C913AAF0009721C /* SDL2_mixer.framework */; };
 		5643E5BD1C9142980009721C /* 157439__nengisuls__misslie-1.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5643E5BC1C9142980009721C /* 157439__nengisuls__misslie-1.wav */; };
 		56F079E41C92661F00A6A5A4 /* bgm.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F079E31C92661F00A6A5A4 /* bgm.mp3 */; };
@@ -40,10 +40,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				560B4DD81CD86801002F7804 /* white.png in CopyFiles */,
 				56F079E41C92661F00A6A5A4 /* bgm.mp3 in CopyFiles */,
 				5643E5BD1C9142980009721C /* 157439__nengisuls__misslie-1.wav in CopyFiles */,
 				561B8F8A1C8A8EA0002F9C26 /* space_invaders_sprite_sheet_by_gooperblooper22.png in CopyFiles */,
-				562631D51C895B7D0087F789 /* white.png in CopyFiles */,
 				562631C71C8949C30087F789 /* font1.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		560B4DD71CD86801002F7804 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = white.png; path = "Homework 3/white.png"; sourceTree = "<group>"; };
 		561B8F861C8A75C1002F9C26 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		561B8F871C8A75C1002F9C26 /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		561B8F891C8A8EA0002F9C26 /* space_invaders_sprite_sheet_by_gooperblooper22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = space_invaders_sprite_sheet_by_gooperblooper22.png; path = "Homework 3/space_invaders_sprite_sheet_by_gooperblooper22.png"; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		562631CD1C8950130087F789 /* SheetSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SheetSprite.hpp; sourceTree = "<group>"; };
 		562631CF1C89525E0087F789 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
 		562631D01C89525E0087F789 /* Bullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bullet.hpp; sourceTree = "<group>"; };
-		562631D41C895B7D0087F789 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = white.png; path = "../Homework 2/Homework 2/white.png"; sourceTree = "<group>"; };
 		5643E5AE1C913AAF0009721C /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
 		5643E5BC1C9142980009721C /* 157439__nengisuls__misslie-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "157439__nengisuls__misslie-1.wav"; path = "Homework 3/157439__nengisuls__misslie-1.wav"; sourceTree = "<group>"; };
 		56F079E31C92661F00A6A5A4 /* bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bgm.mp3; path = "Homework 3/bgm.mp3"; sourceTree = "<group>"; };
@@ -109,10 +109,10 @@
 		6D5A86A119AE5C710066C1FD = {
 			isa = PBXGroup;
 			children = (
+				560B4DD71CD86801002F7804 /* white.png */,
 				56F079E31C92661F00A6A5A4 /* bgm.mp3 */,
 				5643E5BC1C9142980009721C /* 157439__nengisuls__misslie-1.wav */,
 				561B8F891C8A8EA0002F9C26 /* space_invaders_sprite_sheet_by_gooperblooper22.png */,
-				562631D41C895B7D0087F789 /* white.png */,
 				562631C61C8949C30087F789 /* font1.png */,
 				6D5A86B319AE5C710066C1FD /* Homework 3 */,
 				6D5A86D119AE5C710066C1FD /* Homework 3 Tests */,

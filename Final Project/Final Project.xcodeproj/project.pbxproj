@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		561528CC1CE3CDE40030A6A5 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 561528CB1CE3CDE40030A6A5 /* SDL2_mixer.framework */; };
+		56CEDE531CE3E88800F74586 /* arne_sprites.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CEDE521CE3E88800F74586 /* arne_sprites.png */; };
+		56CEDE551CE3E8A400F74586 /* level.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 56CEDE541CE3E8A400F74586 /* level.tmx */; };
+		56CEDE5E1CE3E94B00F74586 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE561CE3E94B00F74586 /* Bullet.cpp */; };
+		56CEDE5F1CE3E94B00F74586 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE581CE3E94B00F74586 /* Entity.cpp */; };
+		56CEDE601CE3E94B00F74586 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE5A1CE3E94B00F74586 /* Player.cpp */; };
+		56CEDE611CE3E94B00F74586 /* SheetSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE5C1CE3E94B00F74586 /* SheetSprite.cpp */; };
 		6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5A86AD19AE5C710066C1FD /* Cocoa.framework */; };
 		6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A86B619AE5C710066C1FD /* InfoPlist.strings */; };
 		6D5A86BA19AE5C710066C1FD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D5A86B919AE5C710066C1FD /* main.cpp */; };
@@ -24,6 +31,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		561528CB1CE3CDE40030A6A5 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
+		56CEDE521CE3E88800F74586 /* arne_sprites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arne_sprites.png; sourceTree = "<group>"; };
+		56CEDE541CE3E8A400F74586 /* level.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level.tmx; sourceTree = "<group>"; };
+		56CEDE561CE3E94B00F74586 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
+		56CEDE571CE3E94B00F74586 /* Bullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bullet.hpp; sourceTree = "<group>"; };
+		56CEDE581CE3E94B00F74586 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
+		56CEDE591CE3E94B00F74586 /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
+		56CEDE5A1CE3E94B00F74586 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		56CEDE5B1CE3E94B00F74586 /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		56CEDE5C1CE3E94B00F74586 /* SheetSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SheetSprite.cpp; sourceTree = "<group>"; };
+		56CEDE5D1CE3E94B00F74586 /* SheetSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SheetSprite.hpp; sourceTree = "<group>"; };
 		6D5A86AA19AE5C710066C1FD /* Final Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5A86AD19AE5C710066C1FD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6D5A86B019AE5C710066C1FD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -53,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D5AC2D019AE6280004CB1BF /* OpenGL.framework in Frameworks */,
+				561528CC1CE3CDE40030A6A5 /* SDL2_mixer.framework in Frameworks */,
 				6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */,
 				6D5A86E319AE5CD10066C1FD /* SDL2.framework in Frameworks */,
 				6D5AC2D219AE6A1E004CB1BF /* SDL2_image.framework in Frameworks */,
@@ -82,6 +101,7 @@
 		6D5A86AC19AE5C710066C1FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				561528CB1CE3CDE40030A6A5 /* SDL2_mixer.framework */,
 				6D5AC2D119AE6A1E004CB1BF /* SDL2_image.framework */,
 				6D5AC2CF19AE6280004CB1BF /* OpenGL.framework */,
 				6D5A86E219AE5CD10066C1FD /* SDL2.framework */,
@@ -104,6 +124,8 @@
 		6D5A86B319AE5C710066C1FD /* Final Project */ = {
 			isa = PBXGroup;
 			children = (
+				56CEDE521CE3E88800F74586 /* arne_sprites.png */,
+				56CEDE541CE3E8A400F74586 /* level.tmx */,
 				6D5A86E119AE5CAA0066C1FD /* Code */,
 				6D5A86B419AE5C710066C1FD /* Supporting Files */,
 			);
@@ -124,6 +146,14 @@
 		6D5A86E119AE5CAA0066C1FD /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				56CEDE561CE3E94B00F74586 /* Bullet.cpp */,
+				56CEDE571CE3E94B00F74586 /* Bullet.hpp */,
+				56CEDE581CE3E94B00F74586 /* Entity.cpp */,
+				56CEDE591CE3E94B00F74586 /* Entity.hpp */,
+				56CEDE5A1CE3E94B00F74586 /* Player.cpp */,
+				56CEDE5B1CE3E94B00F74586 /* Player.hpp */,
+				56CEDE5C1CE3E94B00F74586 /* SheetSprite.cpp */,
+				56CEDE5D1CE3E94B00F74586 /* SheetSprite.hpp */,
 				6DEF23BB1B96CC2600BCE792 /* fragment.glsl */,
 				6DE9D2F01BA6AB8C002D599C /* fragment_textured.glsl */,
 				6DC707691BA7273500225B7D /* vertex_textured.glsl */,
@@ -192,6 +222,8 @@
 			files = (
 				6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */,
 				6DEF23C11B96CC2600BCE792 /* fragment.glsl in Resources */,
+				56CEDE551CE3E8A400F74586 /* level.tmx in Resources */,
+				56CEDE531CE3E88800F74586 /* arne_sprites.png in Resources */,
 				6DE9D2F11BA6AB8C002D599C /* fragment_textured.glsl in Resources */,
 				6D5A86C619AE5C710066C1FD /* Images.xcassets in Resources */,
 				6D5A86BE19AE5C710066C1FD /* Credits.rtf in Resources */,
@@ -209,7 +241,11 @@
 			files = (
 				6DEF23C31B96CC2600BCE792 /* ShaderProgram.cpp in Sources */,
 				6DEF23C21B96CC2600BCE792 /* Matrix.cpp in Sources */,
+				56CEDE611CE3E94B00F74586 /* SheetSprite.cpp in Sources */,
+				56CEDE601CE3E94B00F74586 /* Player.cpp in Sources */,
 				6D5A86BA19AE5C710066C1FD /* main.cpp in Sources */,
+				56CEDE5F1CE3E94B00F74586 /* Entity.cpp in Sources */,
+				56CEDE5E1CE3E94B00F74586 /* Bullet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,9 +357,10 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/Library/Frameworks/SDL2_image.framework/Versions/A/Headers,
 					/Library/Frameworks/SDL2.framework/Versions/A/Headers,
+					/Library/Frameworks/SDL2_mixer.framework/Versions/A/Headers,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Final Project/Final Project-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.stevenlee.Final-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stevenlee.Final-Project";
 				PRODUCT_NAME = "Final Project";
 				WRAPPER_EXTENSION = app;
 			};
@@ -347,7 +384,7 @@
 					/Library/Frameworks/SDL2.framework/Versions/A/Headers,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Final Project/Final Project-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.stevenlee.Final-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stevenlee.Final-Project";
 				PRODUCT_NAME = "Final Project";
 				WRAPPER_EXTENSION = app;
 			};
