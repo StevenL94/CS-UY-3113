@@ -13,6 +13,7 @@
 		565F671F1CE42E5B00543BDE /* space_invaders_sprite_sheet_by_gooperblooper22.png in Resources */ = {isa = PBXBuildFile; fileRef = 565F671B1CE42E5B00543BDE /* space_invaders_sprite_sheet_by_gooperblooper22.png */; };
 		565F67201CE42E5B00543BDE /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = 565F671C1CE42E5B00543BDE /* white.png */; };
 		565F67221CE42F4100543BDE /* font1.png in Resources */ = {isa = PBXBuildFile; fileRef = 565F67211CE42F4100543BDE /* font1.png */; };
+		56A7DB701CE52BF40062611F /* space_invaders_sprite_sheet_by_gooperblooper22_alpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 56A7DB6F1CE52BF40062611F /* space_invaders_sprite_sheet_by_gooperblooper22_alpha.png */; };
 		56CEDE5E1CE3E94B00F74586 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE561CE3E94B00F74586 /* Bullet.cpp */; };
 		56CEDE5F1CE3E94B00F74586 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE581CE3E94B00F74586 /* Entity.cpp */; };
 		56CEDE601CE3E94B00F74586 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE5A1CE3E94B00F74586 /* Player.cpp */; };
@@ -42,6 +43,7 @@
 		565F671B1CE42E5B00543BDE /* space_invaders_sprite_sheet_by_gooperblooper22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = space_invaders_sprite_sheet_by_gooperblooper22.png; path = "Final Project/space_invaders_sprite_sheet_by_gooperblooper22.png"; sourceTree = "<group>"; };
 		565F671C1CE42E5B00543BDE /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = white.png; path = "Final Project/white.png"; sourceTree = "<group>"; };
 		565F67211CE42F4100543BDE /* font1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = font1.png; path = "Final Project/font1.png"; sourceTree = "<group>"; };
+		56A7DB6F1CE52BF40062611F /* space_invaders_sprite_sheet_by_gooperblooper22_alpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = space_invaders_sprite_sheet_by_gooperblooper22_alpha.png; path = "Final Project/space_invaders_sprite_sheet_by_gooperblooper22_alpha.png"; sourceTree = "<group>"; };
 		56CEDE561CE3E94B00F74586 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
 		56CEDE571CE3E94B00F74586 /* Bullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bullet.hpp; sourceTree = "<group>"; };
 		56CEDE581CE3E94B00F74586 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		6D5A86A119AE5C710066C1FD = {
 			isa = PBXGroup;
 			children = (
+				56A7DB6F1CE52BF40062611F /* space_invaders_sprite_sheet_by_gooperblooper22_alpha.png */,
 				565F67211CE42F4100543BDE /* font1.png */,
 				565F67191CE42E5B00543BDE /* 157439__nengisuls__misslie-1.wav */,
 				565F671A1CE42E5B00543BDE /* bgm.mp3 */,
@@ -239,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56A7DB701CE52BF40062611F /* space_invaders_sprite_sheet_by_gooperblooper22_alpha.png in Resources */,
 				565F67221CE42F4100543BDE /* font1.png in Resources */,
 				565F671D1CE42E5B00543BDE /* 157439__nengisuls__misslie-1.wav in Resources */,
 				565F671E1CE42E5B00543BDE /* bgm.mp3 in Resources */,
