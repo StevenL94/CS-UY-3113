@@ -42,12 +42,14 @@ void Entity::update(float& lastFrameTicks, float& elapsed, Matrix& projectionMat
 }
 
 void Entity::render(ShaderProgram& program, GLuint textureID) {
-    glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, vertices);
-    glEnableVertexAttribArray(program.positionAttribute);
-    glVertexAttribPointer(program.texCoordAttribute, 2, GL_FLOAT, false, 0, texCoords);
-    glEnableVertexAttribArray(program.texCoordAttribute);
-    glBindTexture(GL_TEXTURE_2D, textureID);
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+    if(display) {
+        glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, vertices);
+        glEnableVertexAttribArray(program.positionAttribute);
+        glVertexAttribPointer(program.texCoordAttribute, 2, GL_FLOAT, false, 0, texCoords);
+        glEnableVertexAttribArray(program.texCoordAttribute);
+        glBindTexture(GL_TEXTURE_2D, textureID);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+    }
 }
 
 void Entity::setVertices(float arr[], size_t size) {

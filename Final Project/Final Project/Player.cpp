@@ -66,8 +66,10 @@ void Player::update(float &lastFrameTicks, float &elapsed, Matrix &projectionMat
         bullet.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program);
         bullet.render(program, textureID);
     }
-    if ((ent.y - 0.00786241/2 <= bullet.y + 0.01/2) && (ent.y + 0.00786241/2 >= bullet.y - 0.01/2) && ((bullet.x - 0.01/2) <= ((ent.x + 0.0356564/2)))  && ((bullet.x + 0.01/2) >= ((ent.x - 0.0356564/2)))){
+    if ((ent.y - 0.00786241/2 <= bullet.y) && (ent.y + 0.00786241/2 >= bullet.y) && ((bullet.x) <= ((ent.x + 0.0356564/2)))  && ((bullet.x) >= ((ent.x - 0.0356564/2)))){
+        ent.display = false;
         std::cout << "Target Hit" << std::endl;
+        
     }
     modelMatrix.identity();
     modelMatrix.Scale(0.5, 2, 0);

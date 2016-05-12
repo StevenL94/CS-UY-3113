@@ -137,13 +137,21 @@ int main(int argc, char *argv[]) {
         lev2 = elapsed/4;
         screenShakeValue += elapsed;
         SheetSprite menu(spriteSheetTexture, 160.0f/617.0f, 1.0f/2035.0f, 250.0f/617.0f, 171.0f/2035.0f, 0.5);
+        menu.display = true;
         SheetSprite splash(spriteSheetTexture, 419.0f/617.0f, 12.0f/2035.0f, 187.0f/617.0f, 163.0f/2035.0f, 0.5);
+        splash.display = true;
         Entity text;
+        text.display = true;
         Player cannon(spriteSheetTexture, 355.0f/617.0f, 1163.0f/2035.0f, 104.0f/617.0f, 64.0f/2035.0f, 0.05);
+        cannon.display = true;
         Player cannon2(spriteSheetTexture, 355.0f/617.0f, 1163.0f/2035.0f, 104.0f/617.0f, 64.0f/2035.0f, 0.05);
+        cannon2.display = true;
         SheetSprite alien(spriteSheetTexture, animation[currentIndex], (581.0f/2035.0f), 88.0f/617.0f, 64.0f/2035.0f, 0.05);
+        alien.display = true;
         SheetSprite alien2(spriteSheetTexture, animation[currentIndex], (581.0f/2035.0f), 88.0f/617.0f, 64.0f/2035.0f, 0.05);
+        alien2.display = true;
         SheetSprite alien3(spriteSheetTexture, animation[currentIndex], (581.0f/2035.0f), 88.0f/617.0f, 64.0f/2035.0f, 0.05);
+        alien3.display = true;
         
 //        Fullscreen
         const Uint8 *keys = SDL_GetKeyboardState(NULL);
@@ -184,7 +192,11 @@ int main(int argc, char *argv[]) {
                 if (Mix_PausedMusic()) {
                     Mix_ResumeMusic();
                 }
-                score = ticks;
+                if (alien.display == false) {
+                    if (score < 100) {
+                        score += ticks;
+                    }
+                }
                 text.DrawText(program, textTexture, "Score:" + std::to_string(score), 0.075, 0, -0.23, 0.9);
                 cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 1);
                 cannon.draw(program);
@@ -200,7 +212,7 @@ int main(int argc, char *argv[]) {
                     prev = STATE_GAME_LEVEL1;
                     state = STATE_PAUSE;
                 }
-                if (keys[SDL_SCANCODE_M]) {
+                if (keys[SDL_SCANCODE_M] || score >= 100) {
                     state++;
                 }
                 break;
@@ -209,15 +221,21 @@ int main(int argc, char *argv[]) {
                 if (Mix_PausedMusic()) {
                     Mix_ResumeMusic();
                 }
-                score = ticks;
+                if (alien.display == false || alien2.display == false) {
+                    if (score < 200) {
+                        score += ticks;
+                    }
+                }
                 viewMatrix.Translate(0.0f, sin(screenShakeValue * 39.0f)* 0.01f, 0.0f);
                 text.DrawText(program, textTexture, "Score:" + std::to_string(score), 0.075, 0, -0.23, 0.9);
                 cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 1);
                 cannon.draw(program);
                 cannon2.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 2);
                 cannon2.draw(program);
+                alien.display = true;
                 alien.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false);
                 alien.draw(program);
+                alien2.display = true;
                 alien2.update(lastFrameTicks, lev1, projectionMatrix, viewMatrix, program, false);
                 alien2.draw(program);
                 if (keys[SDL_SCANCODE_SPACE] || keys[SDL_SCANCODE_UP]) {
@@ -228,7 +246,7 @@ int main(int argc, char *argv[]) {
                     prev = STATE_GAME_LEVEL2;
                     state = STATE_PAUSE;
                 }
-                if (keys[SDL_SCANCODE_RIGHT] && keys[SDL_SCANCODE_M]) {
+                if ((keys[SDL_SCANCODE_RIGHT] && keys[SDL_SCANCODE_M]) || score >= 200) {
                     state++;
                 }
                 break;
@@ -237,7 +255,11 @@ int main(int argc, char *argv[]) {
                 if (Mix_PausedMusic()) {
                     Mix_ResumeMusic();
                 }
-                score = ticks;
+                if (alien.display == false || alien2.display == false || alien3.display == false) {
+                    if (score < 300) {
+                        score += ticks;
+                    }
+                }
 //                viewMatrix.Translate(val, val2, 0.0);
                 
                 text.DrawText(program, textTexture, "Score:" + std::to_string(score), 0.075, 0, -0.23, 0.9);
@@ -245,10 +267,13 @@ int main(int argc, char *argv[]) {
                 cannon.draw(program);
                 cannon2.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 2);
                 cannon2.draw(program);
+                alien.display = true;
                 alien.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false);
                 alien.draw(program);
+                alien2.display = true;
                 alien2.update(lastFrameTicks, val, projectionMatrix, viewMatrix, program, false);
                 alien2.draw(program);
+                alien3.display = true;
                 alien3.update(lastFrameTicks, val2, projectionMatrix, viewMatrix, program, false);
                 alien3.draw(program);
                 if (keys[SDL_SCANCODE_SPACE] || keys[SDL_SCANCODE_UP]) {
@@ -259,7 +284,7 @@ int main(int argc, char *argv[]) {
                     prev = STATE_GAME_LEVEL3;
                     state = STATE_PAUSE;
                 }
-                if (keys[SDL_SCANCODE_L]) {
+                if (keys[SDL_SCANCODE_L] || score >= 300) {
                     state = STATE_SPLASH;
                 }
                 break;
