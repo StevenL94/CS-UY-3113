@@ -207,7 +207,7 @@ int main(int argc, char *argv[]) {
                     prev = STATE_GAME_LEVEL1;
                     state = STATE_PAUSE;
                 }
-                if (keys[SDL_SCANCODE_M] || score >= 100) {
+                if (keys[SDL_SCANCODE_M] || score >= 100 || alien.y <= -0.65) {
                     state++;
                 }
                 break;
@@ -236,7 +236,7 @@ int main(int argc, char *argv[]) {
                     prev = STATE_GAME_LEVEL2;
                     state = STATE_PAUSE;
                 }
-                if ((keys[SDL_SCANCODE_RIGHT] && keys[SDL_SCANCODE_M]) || score >= 200) {
+                if ((keys[SDL_SCANCODE_RIGHT] && keys[SDL_SCANCODE_M]) || score >= 200 || alien2.y <= -0.65) {
                     state++;
                 }
                 break;
@@ -269,7 +269,7 @@ int main(int argc, char *argv[]) {
                     prev = STATE_GAME_LEVEL3;
                     state = STATE_PAUSE;
                 }
-                if (keys[SDL_SCANCODE_L] || score >= 300) {
+                if (keys[SDL_SCANCODE_L] || score >= 300 || alien2.y <= -0.65 || alien3.y <= -0.65) {
                     score = 0;
                     state = STATE_SPLASH;
                 }
