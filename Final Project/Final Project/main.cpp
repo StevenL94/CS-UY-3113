@@ -192,15 +192,10 @@ int main(int argc, char *argv[]) {
                 if (Mix_PausedMusic()) {
                     Mix_ResumeMusic();
                 }
-                if (alien.display == false) {
-                    if (score < 100) {
-                        score += ticks;
-                    }
-                }
                 text.DrawText(program, textTexture, "Score:" + std::to_string(score), 0.075, 0, -0.23, 0.9);
-                cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 1);
+                cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 1, score);
                 cannon.draw(program);
-                cannon2.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 2);
+                cannon2.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 2, score);
                 cannon2.draw(program);
                 alien.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false);
                 alien.draw(program);
@@ -221,18 +216,13 @@ int main(int argc, char *argv[]) {
                 if (Mix_PausedMusic()) {
                     Mix_ResumeMusic();
                 }
-                if (alien.display == false || alien2.display == false) {
-                    if (score < 200) {
-                        score += ticks;
-                    }
-                }
                 viewMatrix.Translate(0.0f, sin(screenShakeValue * 39.0f)* 0.01f, 0.0f);
                 text.DrawText(program, textTexture, "Score:" + std::to_string(score), 0.075, 0, -0.23, 0.9);
-                cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 1);
+                cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 1,score);
                 cannon.draw(program);
-                cannon2.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 2);
+                cannon2.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 2,score);
                 cannon2.draw(program);
-                alien.display = true;
+                
                 alien.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false);
                 alien.draw(program);
                 alien2.display = true;
@@ -255,17 +245,12 @@ int main(int argc, char *argv[]) {
                 if (Mix_PausedMusic()) {
                     Mix_ResumeMusic();
                 }
-                if (alien.display == false || alien2.display == false || alien3.display == false) {
-                    if (score < 300) {
-                        score += ticks;
-                    }
-                }
 //                viewMatrix.Translate(val, val2, 0.0);
                 
                 text.DrawText(program, textTexture, "Score:" + std::to_string(score), 0.075, 0, -0.23, 0.9);
-                cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 1);
+                cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 1,score);
                 cannon.draw(program);
-                cannon2.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 2);
+                cannon2.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 2,score);
                 cannon2.draw(program);
                 alien.display = true;
                 alien.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false);
@@ -285,6 +270,7 @@ int main(int argc, char *argv[]) {
                     state = STATE_PAUSE;
                 }
                 if (keys[SDL_SCANCODE_L] || score >= 300) {
+                    score = 0;
                     state = STATE_SPLASH;
                 }
                 break;
@@ -294,7 +280,6 @@ int main(int argc, char *argv[]) {
                 if (Mix_PlayingMusic()) {
                     Mix_PauseMusic();
                 }
-                score = score;
                 text.DrawText(program, textTexture, "Paused", 0.1, 0, -0.23, 0);
                 text.DrawText(program, textTexture, "Press Escape to Exit", 0.09, 0, -0.63, -0.8);
                 if (keys[SDL_SCANCODE_RETURN]) {

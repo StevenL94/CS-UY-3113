@@ -19,8 +19,9 @@ class Player : public SheetSprite {
     std::vector<Bullet> bullets;
     
 public:
+    float score = 0;
     Player(unsigned int textureID, float u, float v, float width, float height, float size);
-    void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program, GLuint textureID, Entity& ent, int player);
+    void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program, GLuint textureID, Entity& ent, int player, int& score);
     void shootBullet();
 };
 

@@ -11,7 +11,7 @@
 Player::Player(unsigned int textureID, float u, float v, float width, float height, float size) : SheetSprite(textureID, u, v, width, height, size) {
 }
 
-void Player::update(float &lastFrameTicks, float &elapsed, Matrix &projectionMatrix, Matrix &viewMatrix, ShaderProgram &program, GLuint textureID, Entity& ent, int player) {
+void Player::update(float &lastFrameTicks, float &elapsed, Matrix &projectionMatrix, Matrix &viewMatrix, ShaderProgram &program, GLuint textureID, Entity& ent, int player, int& score) {
     //    Update modelMatrix
     Matrix modelMatrix;
     static Bullet bullet(x/2);
@@ -66,10 +66,10 @@ void Player::update(float &lastFrameTicks, float &elapsed, Matrix &projectionMat
         bullet.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program);
         bullet.render(program, textureID);
     }
-    if ((ent.y - 0.00786241/2 <= bullet.y) && (ent.y + 0.00786241/2 >= bullet.y) && ((bullet.x) <= ((ent.x + 0.0356564/2)))  && ((bullet.x) >= ((ent.x - 0.0356564/2)))){
+    if ((ent.y - 0.3/2 <= bullet.y) && (ent.y + 0.3/2 >= bullet.y) && ((bullet.x) <= ((ent.x + 0.3/2)))  && ((bullet.x) >= ((ent.x - 0.3/2)))){
+         std::cout << "Target Hit" << std::endl;
+        score += 100;
         ent.display = false;
-        std::cout << "Target Hit" << std::endl;
-        
     }
     modelMatrix.identity();
     modelMatrix.Scale(0.5, 2, 0);
