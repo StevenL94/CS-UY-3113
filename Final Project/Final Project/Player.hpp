@@ -1,6 +1,6 @@
 //
 //  Player.hpp
-//  Homework 3
+//  Final Project
 //
 //  Created by Steven Lee on 3/4/16.
 //  Copyright © 2016 Steven Lee. All rights reserved.
@@ -20,7 +20,7 @@ class Player : public SheetSprite {
     
 public:
     Player(unsigned int textureID, float u, float v, float width, float height, float size);
-    void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program, GLuint textureID, Entity& ent);
+    void update(float& lastFrameTicks, float& elapsed, Matrix& projectionMatrix, Matrix& viewMatrix, ShaderProgram& program, GLuint textureID, Entity& ent, int player);
     void shootBullet();
 };
 

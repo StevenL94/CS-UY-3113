@@ -3,17 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		561528CC1CE3CDE40030A6A5 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 561528CB1CE3CDE40030A6A5 /* SDL2_mixer.framework */; };
-		56CEDE531CE3E88800F74586 /* arne_sprites.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CEDE521CE3E88800F74586 /* arne_sprites.png */; };
-		56CEDE551CE3E8A400F74586 /* level.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 56CEDE541CE3E8A400F74586 /* level.tmx */; };
+		565F671D1CE42E5B00543BDE /* 157439__nengisuls__misslie-1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 565F67191CE42E5B00543BDE /* 157439__nengisuls__misslie-1.wav */; };
+		565F671E1CE42E5B00543BDE /* bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 565F671A1CE42E5B00543BDE /* bgm.mp3 */; };
+		565F671F1CE42E5B00543BDE /* space_invaders_sprite_sheet_by_gooperblooper22.png in Resources */ = {isa = PBXBuildFile; fileRef = 565F671B1CE42E5B00543BDE /* space_invaders_sprite_sheet_by_gooperblooper22.png */; };
+		565F67201CE42E5B00543BDE /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = 565F671C1CE42E5B00543BDE /* white.png */; };
+		565F67221CE42F4100543BDE /* font1.png in Resources */ = {isa = PBXBuildFile; fileRef = 565F67211CE42F4100543BDE /* font1.png */; };
 		56CEDE5E1CE3E94B00F74586 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE561CE3E94B00F74586 /* Bullet.cpp */; };
 		56CEDE5F1CE3E94B00F74586 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE581CE3E94B00F74586 /* Entity.cpp */; };
 		56CEDE601CE3E94B00F74586 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE5A1CE3E94B00F74586 /* Player.cpp */; };
 		56CEDE611CE3E94B00F74586 /* SheetSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE5C1CE3E94B00F74586 /* SheetSprite.cpp */; };
+		56CEDE6E1CE3F0D700F74586 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE6C1CE3F0D700F74586 /* Level.cpp */; };
+		56CEDE711CE3F5C200F74586 /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56CEDE6F1CE3F5C200F74586 /* PerlinNoise.cpp */; };
 		6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5A86AD19AE5C710066C1FD /* Cocoa.framework */; };
 		6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A86B619AE5C710066C1FD /* InfoPlist.strings */; };
 		6D5A86BA19AE5C710066C1FD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D5A86B919AE5C710066C1FD /* main.cpp */; };
@@ -32,8 +37,11 @@
 
 /* Begin PBXFileReference section */
 		561528CB1CE3CDE40030A6A5 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
-		56CEDE521CE3E88800F74586 /* arne_sprites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arne_sprites.png; sourceTree = "<group>"; };
-		56CEDE541CE3E8A400F74586 /* level.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level.tmx; sourceTree = "<group>"; };
+		565F67191CE42E5B00543BDE /* 157439__nengisuls__misslie-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "157439__nengisuls__misslie-1.wav"; path = "Final Project/157439__nengisuls__misslie-1.wav"; sourceTree = "<group>"; };
+		565F671A1CE42E5B00543BDE /* bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bgm.mp3; path = "Final Project/bgm.mp3"; sourceTree = "<group>"; };
+		565F671B1CE42E5B00543BDE /* space_invaders_sprite_sheet_by_gooperblooper22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = space_invaders_sprite_sheet_by_gooperblooper22.png; path = "Final Project/space_invaders_sprite_sheet_by_gooperblooper22.png"; sourceTree = "<group>"; };
+		565F671C1CE42E5B00543BDE /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = white.png; path = "Final Project/white.png"; sourceTree = "<group>"; };
+		565F67211CE42F4100543BDE /* font1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = font1.png; path = "Final Project/font1.png"; sourceTree = "<group>"; };
 		56CEDE561CE3E94B00F74586 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
 		56CEDE571CE3E94B00F74586 /* Bullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bullet.hpp; sourceTree = "<group>"; };
 		56CEDE581CE3E94B00F74586 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
@@ -42,6 +50,10 @@
 		56CEDE5B1CE3E94B00F74586 /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		56CEDE5C1CE3E94B00F74586 /* SheetSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SheetSprite.cpp; sourceTree = "<group>"; };
 		56CEDE5D1CE3E94B00F74586 /* SheetSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SheetSprite.hpp; sourceTree = "<group>"; };
+		56CEDE6C1CE3F0D700F74586 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
+		56CEDE6D1CE3F0D700F74586 /* Level.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Level.hpp; sourceTree = "<group>"; };
+		56CEDE6F1CE3F5C200F74586 /* PerlinNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PerlinNoise.cpp; sourceTree = "<group>"; };
+		56CEDE701CE3F5C200F74586 /* PerlinNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerlinNoise.h; sourceTree = "<group>"; };
 		6D5A86AA19AE5C710066C1FD /* Final Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5A86AD19AE5C710066C1FD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6D5A86B019AE5C710066C1FD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -84,6 +96,11 @@
 		6D5A86A119AE5C710066C1FD = {
 			isa = PBXGroup;
 			children = (
+				565F67211CE42F4100543BDE /* font1.png */,
+				565F67191CE42E5B00543BDE /* 157439__nengisuls__misslie-1.wav */,
+				565F671A1CE42E5B00543BDE /* bgm.mp3 */,
+				565F671B1CE42E5B00543BDE /* space_invaders_sprite_sheet_by_gooperblooper22.png */,
+				565F671C1CE42E5B00543BDE /* white.png */,
 				6D5A86B319AE5C710066C1FD /* Final Project */,
 				6D5A86AC19AE5C710066C1FD /* Frameworks */,
 				6D5A86AB19AE5C710066C1FD /* Products */,
@@ -124,8 +141,6 @@
 		6D5A86B319AE5C710066C1FD /* Final Project */ = {
 			isa = PBXGroup;
 			children = (
-				56CEDE521CE3E88800F74586 /* arne_sprites.png */,
-				56CEDE541CE3E8A400F74586 /* level.tmx */,
 				6D5A86E119AE5CAA0066C1FD /* Code */,
 				6D5A86B419AE5C710066C1FD /* Supporting Files */,
 			);
@@ -146,8 +161,12 @@
 		6D5A86E119AE5CAA0066C1FD /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				56CEDE6F1CE3F5C200F74586 /* PerlinNoise.cpp */,
+				56CEDE701CE3F5C200F74586 /* PerlinNoise.h */,
 				56CEDE561CE3E94B00F74586 /* Bullet.cpp */,
 				56CEDE571CE3E94B00F74586 /* Bullet.hpp */,
+				56CEDE6C1CE3F0D700F74586 /* Level.cpp */,
+				56CEDE6D1CE3F0D700F74586 /* Level.hpp */,
 				56CEDE581CE3E94B00F74586 /* Entity.cpp */,
 				56CEDE591CE3E94B00F74586 /* Entity.hpp */,
 				56CEDE5A1CE3E94B00F74586 /* Player.cpp */,
@@ -193,12 +212,12 @@
 		6D5A86A219AE5C710066C1FD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = NYUCB;
-				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Ivan Safrin";
+				CLASSPREFIX = "Final Project";
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Steven Lee";
 			};
 			buildConfigurationList = 6D5A86A519AE5C710066C1FD /* Build configuration list for PBXProject "Final Project" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -220,10 +239,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				565F67221CE42F4100543BDE /* font1.png in Resources */,
+				565F671D1CE42E5B00543BDE /* 157439__nengisuls__misslie-1.wav in Resources */,
+				565F671E1CE42E5B00543BDE /* bgm.mp3 in Resources */,
+				565F671F1CE42E5B00543BDE /* space_invaders_sprite_sheet_by_gooperblooper22.png in Resources */,
+				565F67201CE42E5B00543BDE /* white.png in Resources */,
 				6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */,
 				6DEF23C11B96CC2600BCE792 /* fragment.glsl in Resources */,
-				56CEDE551CE3E8A400F74586 /* level.tmx in Resources */,
-				56CEDE531CE3E88800F74586 /* arne_sprites.png in Resources */,
 				6DE9D2F11BA6AB8C002D599C /* fragment_textured.glsl in Resources */,
 				6D5A86C619AE5C710066C1FD /* Images.xcassets in Resources */,
 				6D5A86BE19AE5C710066C1FD /* Credits.rtf in Resources */,
@@ -241,6 +263,8 @@
 			files = (
 				6DEF23C31B96CC2600BCE792 /* ShaderProgram.cpp in Sources */,
 				6DEF23C21B96CC2600BCE792 /* Matrix.cpp in Sources */,
+				56CEDE711CE3F5C200F74586 /* PerlinNoise.cpp in Sources */,
+				56CEDE6E1CE3F0D700F74586 /* Level.cpp in Sources */,
 				56CEDE611CE3E94B00F74586 /* SheetSprite.cpp in Sources */,
 				56CEDE601CE3E94B00F74586 /* Player.cpp in Sources */,
 				6D5A86BA19AE5C710066C1FD /* main.cpp in Sources */,
@@ -288,6 +312,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;

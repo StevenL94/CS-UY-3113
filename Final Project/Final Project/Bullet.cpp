@@ -1,6 +1,6 @@
 //
 //  Bullet.cpp
-//  Homework 3
+//  Final Project
 //
 //  Created by Steven Lee on 3/4/16.
 //  Copyright © 2016 Steven Lee. All rights reserved.

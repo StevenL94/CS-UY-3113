@@ -1,6 +1,6 @@
 //
 //  Player.cpp
-//  Homework 3
+//  Final Project
 //
 //  Created by Steven Lee on 3/4/16.
 //  Copyright © 2016 Steven Lee. All rights reserved.
@@ -11,30 +11,53 @@
 Player::Player(unsigned int textureID, float u, float v, float width, float height, float size) : SheetSprite(textureID, u, v, width, height, size) {
 }
 
-void Player::update(float &lastFrameTicks, float &elapsed, Matrix &projectionMatrix, Matrix &viewMatrix, ShaderProgram &program, GLuint textureID, Entity& ent) {
+void Player::update(float &lastFrameTicks, float &elapsed, Matrix &projectionMatrix, Matrix &viewMatrix, ShaderProgram &program, GLuint textureID, Entity& ent, int player) {
     //    Update modelMatrix
     Matrix modelMatrix;
     static Bullet bullet(x/2);
     static bool pressed = false;
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
-    if (keys[SDL_SCANCODE_A]) {
-        if (x > -1.85) {
-            x -= elapsed*2;
+    if (player == 1) {
+        if (keys[SDL_SCANCODE_A]) {
+            if (x > -1.85) {
+                x -= elapsed*2;
+            }
+        }
+        if(keys[SDL_SCANCODE_D]) {
+            if (x < 1.85) {
+                x += elapsed*2;
+            }
         }
     }
-    if(keys[SDL_SCANCODE_D]) {
-        if (x < 1.85) {
-            x += elapsed*2;
+    else {
+        if (keys[SDL_SCANCODE_LEFT]) {
+            if (x > -1.85) {
+                x -= elapsed*2;
+            }
+        }
+        if(keys[SDL_SCANCODE_RIGHT]) {
+            if (x < 1.85) {
+                x += elapsed*2;
+            }
         }
     }
+    
 //    shootBullet();
 //    for (Bullet b : bullets) {
 //        b.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program);
 //        b.render(program, textureID);
 //    }
-    if (keys[SDL_SCANCODE_SPACE]) {
-        pressed = true;
+    if (player == 1) {
+        if (keys[SDL_SCANCODE_SPACE]) {
+            pressed = true;
+        }
     }
+    else {
+        if (keys[SDL_SCANCODE_UP]) {
+            pressed = true;
+        }
+    }
+    
     if (pressed) {
         if (bullet.displayBullet(1.6)) {
             pressed = false;

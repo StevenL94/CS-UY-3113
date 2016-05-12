@@ -1,6 +1,6 @@
 //
 //  SheetSprite.hpp
-//  Homework 3
+//  Final Project
 //
 //  Created by Steven Lee on 3/1/16.
 //  Copyright © 2016 Steven Lee. All rights reserved.
