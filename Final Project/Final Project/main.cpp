@@ -74,10 +74,12 @@ void processEvents(Matrix& projectionMatrix, Matrix& modelMatrix, Matrix& viewMa
 }
 
 int main(int argc, char *argv[]) {
+//    Create Matrices
     Matrix projectionMatrix;
     Matrix modelMatrix;
     Matrix viewMatrix;
     
+//    Initialize
     init();
     ShaderProgram program(RESOURCE_FOLDER "vertex_textured.glsl", RESOURCE_FOLDER "fragment_textured.glsl");
     glUseProgram(program.programID);
@@ -89,23 +91,26 @@ int main(int argc, char *argv[]) {
     bool done = false;
     
 /*    Sprites courtesy of http://gooperblooper22.deviantart.com/art/Space-Invaders-Sprite-Sheet-135338373  */
+//    Load Textures
     GLuint spriteSheetTexture = LoadTexture("space_invaders_sprite_sheet_by_gooperblooper22_alpha.png");
     GLuint white = LoadTexture("white.png");
     GLuint textTexture = LoadTexture("font1.png");
     Mix_Music *bgm = Mix_LoadMUS("bgm.mp3");
     Mix_Chunk *missile = Mix_LoadWAV("157439__nengisuls__misslie-1.wav");
+//    Initialize Variables
     bool pressed = false;
     int score = 0;
     int currentIndex = 0;
     int state = STATE_SPLASH;
     int prev;
-    float lev1,lev2, perlinValue;
+    float lev1, perlinValue;
     float screenShakeValue;
+    float currTime = 0;
     const int numFrames = 2;
     float animation[] = {(387.0f/617.0f),(491.0f/617.0f)};
     float animationElapsed = 0.0f;
     float framesPerSecond = 0.0004f;
-    std::vector<SheetSprite> aliens;
+//    std::vector<SheetSprite> aliens;
     
     while (!done) {
         while (SDL_PollEvent(&event)) {
@@ -113,10 +118,12 @@ int main(int argc, char *argv[]) {
                 done = true;
             }
         }
+//        Link matrices to Shader
         program.setProjectionMatrix(projectionMatrix);
         program.setModelMatrix(modelMatrix);
         program.setViewMatrix(viewMatrix);
         
+//        Elapsed Time Variables
         float ticks = (float)SDL_GetTicks()/1000;
         float elapsed = ticks - lastFrameTicks;
         lastFrameTicks = ticks;
@@ -130,12 +137,16 @@ int main(int argc, char *argv[]) {
             }
         }
         
+//        Clear Screen
         glClear(GL_COLOR_BUFFER_BIT);
         
         
+//        Level 1 Alien Speed Value
         lev1 = elapsed/2;
-        lev2 = elapsed/4;
+//        Screen Shake Value
         screenShakeValue += elapsed;
+        
+//        Create Entities
         SheetSprite menu(spriteSheetTexture, 160.0f/617.0f, 1.0f/2035.0f, 250.0f/617.0f, 171.0f/2035.0f, 0.5);
         menu.display = true;
         SheetSprite splash(spriteSheetTexture, 419.0f/617.0f, 12.0f/2035.0f, 187.0f/617.0f, 163.0f/2035.0f, 0.5);
@@ -153,33 +164,42 @@ int main(int argc, char *argv[]) {
         SheetSprite alien3(spriteSheetTexture, animation[currentIndex], (581.0f/2035.0f), 88.0f/617.0f, 64.0f/2035.0f, 0.05);
         alien3.display = true;
         
-//        Fullscreen
         const Uint8 *keys = SDL_GetKeyboardState(NULL);
+//        Disable Cursor
         SDL_ShowCursor(0);
         
+//        Fullscreen - Command + F on Mac; Windows + F on Windows
         if (keys[SDL_SCANCODE_LGUI] && keys[SDL_SCANCODE_F]) {
             SDL_SetWindowFullscreen(displayWindow, SDL_WINDOW_FULLSCREEN);
         }
+        
+//        Perlin Noise X Seed Value
         perlinValue += elapsed;
 
+//        Perlin Noise Value
         float coord[2] = {perlinValue, 0.0};
-        float val = noise2(coord)/100;
+        float val = noise2(coord)/100 + elapsed;
         coord[1] = 0.5f;
-        float val2 = noise2(coord)/100;
+        float val2 = noise2(coord)/100 + elapsed;
         
+//        Game States
         switch (state) {
+//                Splash Screen
             case STATE_SPLASH:
                 score = 0;
                 splash.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, true);
                 splash.draw(program);
-                if (ticks > 3.0f || keys[SDL_SCANCODE_SPACE]) {
+//                Automatically Change After 3s or User Presses Spacebar
+                if (ticks - currTime > 3.0f || keys[SDL_SCANCODE_SPACE]) {
                     state++;
                 }
                 break;
                 
+//                Main Menu
             case STATE_MAIN_MENU:
                 menu.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, true);
                 menu.draw(program);
+//                Start Playing Music
                 if (!Mix_PlayingMusic()) {
                     Mix_PlayMusic(bgm, -1);
                 }
@@ -188,7 +208,9 @@ int main(int argc, char *argv[]) {
                 }
                 break;
                 
+//                Level 1 - Single Alien
             case STATE_GAME_LEVEL1:
+//                Resume Music From Pause
                 if (Mix_PausedMusic()) {
                     Mix_ResumeMusic();
                 }
@@ -199,54 +221,74 @@ int main(int argc, char *argv[]) {
                 cannon2.draw(program);
                 alien.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false);
                 alien.draw(program);
+//                Missile Sound
                 if (keys[SDL_SCANCODE_SPACE] || keys[SDL_SCANCODE_UP]) {
                     Mix_PlayChannel( -1, missile, 0);
                     Mix_VolumeChunk(missile, 15);
                 }
+//                Pause State
                 if (keys[SDL_SCANCODE_ESCAPE]) {
                     prev = STATE_GAME_LEVEL1;
                     state = STATE_PAUSE;
                 }
-                if (keys[SDL_SCANCODE_M] || score >= 100 || alien.y <= -0.65) {
+//                Next Level when Score is > 100 i.e. hit Alien or Skip Level - 'M' Key
+                if (keys[SDL_SCANCODE_M] || score >= 100) {
                     state++;
+                }
+//                If Alien Reaches Bottom, Revert State
+                if (alien.y <= -0.65) {
+                    state--;
                 }
                 break;
                 
+//                Level 2 - 2 Aliens at Different Speeds with Screen Shake
             case STATE_GAME_LEVEL2:
+//                Resume Music From Pause
                 if (Mix_PausedMusic()) {
                     Mix_ResumeMusic();
                 }
+//                Shake Screen
                 viewMatrix.Translate(0.0f, sin(screenShakeValue * 39.0f)* 0.01f, 0.0f);
                 text.DrawText(program, textTexture, "Score:" + std::to_string(score), 0.075, 0, -0.23, 0.9);
                 cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 1,score);
                 cannon.draw(program);
                 cannon2.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 2,score);
                 cannon2.draw(program);
-                
                 alien.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false);
                 alien.draw(program);
                 alien2.display = true;
+//               'lev1' is half of normal speed
                 alien2.update(lastFrameTicks, lev1, projectionMatrix, viewMatrix, program, false);
                 alien2.draw(program);
+//                Missile Sound
                 if (keys[SDL_SCANCODE_SPACE] || keys[SDL_SCANCODE_UP]) {
                     Mix_PlayChannel( -1, missile, 0);
                     Mix_VolumeChunk(missile, 15);
                 }
+//                Pause State
                 if (keys[SDL_SCANCODE_ESCAPE]) {
                     prev = STATE_GAME_LEVEL2;
                     state = STATE_PAUSE;
                 }
-                if ((keys[SDL_SCANCODE_RIGHT] && keys[SDL_SCANCODE_M]) || score >= 200 || alien2.y <= -0.65) {
+//                Next Level when Score is > 500 i.e. arbitrary but requires hitting alien
+//                Skip Level - 'M' and Right Arrow Keys
+                if ((keys[SDL_SCANCODE_RIGHT] && keys[SDL_SCANCODE_M]) || score >= 500) {
                     state++;
+                }
+//                If Alien Reaches Bottom, Revert State
+                if (alien2.y <= -0.65) {
+                    state--;
                 }
                 break;
                 
+//                Level 3 - 3 Aliens at Different Speeds with Vigorous Shake; 1 at normal, 2 are generated from Perlin Noise
             case STATE_GAME_LEVEL3:
+//                Resume Music From Pause
                 if (Mix_PausedMusic()) {
                     Mix_ResumeMusic();
                 }
 //                viewMatrix.Translate(val, val2, 0.0);
-                
+                viewMatrix.Translate(0.0f, sin(screenShakeValue * 39.0f)* 0.02f, 0.0f);
                 text.DrawText(program, textTexture, "Score:" + std::to_string(score), 0.075, 0, -0.23, 0.9);
                 cannon.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, white, alien, 1,score);
                 cannon.draw(program);
@@ -256,32 +298,46 @@ int main(int argc, char *argv[]) {
                 alien.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program, false);
                 alien.draw(program);
                 alien2.display = true;
+//                'val' is Perlin Noise Value
                 alien2.update(lastFrameTicks, val, projectionMatrix, viewMatrix, program, false);
                 alien2.draw(program);
                 alien3.display = true;
+//                'val2' is Perlin Noise Value
                 alien3.update(lastFrameTicks, val2, projectionMatrix, viewMatrix, program, false);
                 alien3.draw(program);
+//                Missile Sound
                 if (keys[SDL_SCANCODE_SPACE] || keys[SDL_SCANCODE_UP]) {
                     Mix_PlayChannel( -1, missile, 0);
                     Mix_VolumeChunk(missile, 15);
                 }
+//                Pause State
                 if (keys[SDL_SCANCODE_ESCAPE]) {
                     prev = STATE_GAME_LEVEL3;
                     state = STATE_PAUSE;
                 }
-                if (keys[SDL_SCANCODE_L] || score >= 300 || alien2.y <= -0.65 || alien3.y <= -0.65) {
+//                Splash Screen if Score is > 2000 i.e. arbitrary but requires hitting alien
+//                Skip Level - 'L' Key
+                if (keys[SDL_SCANCODE_L] || score >= 2000) {
                     score = 0;
                     state = STATE_SPLASH;
+                    currTime = ticks;
+                }
+//                If Alien Reaches Bottom, Revert State
+                if (alien2.y <= -0.65 || alien3.y <= -0.65) {
+                    state--;
                 }
                 break;
                 
-                
+//                Pause Game
             case STATE_PAUSE:
+//                Pause Music
                 if (Mix_PlayingMusic()) {
                     Mix_PauseMusic();
                 }
+//                Display Pause Text
                 text.DrawText(program, textTexture, "Paused", 0.1, 0, -0.23, 0);
                 text.DrawText(program, textTexture, "Press Escape to Exit", 0.09, 0, -0.63, -0.8);
+//                Return to Current Level
                 if (keys[SDL_SCANCODE_RETURN]) {
                     state = prev;
                 }
@@ -289,6 +345,7 @@ int main(int argc, char *argv[]) {
                 if (pressed) {
                     done = true;
                 }
+//                Close Game
                 if (keys[SDL_SCANCODE_ESCAPE]) {
                     int time = 0;
                     time += ticks;

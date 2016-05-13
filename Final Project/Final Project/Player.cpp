@@ -66,7 +66,7 @@ void Player::update(float &lastFrameTicks, float &elapsed, Matrix &projectionMat
         bullet.update(lastFrameTicks, elapsed, projectionMatrix, viewMatrix, program);
         bullet.render(program, textureID);
     }
-    if ((ent.y - 0.3/2 <= bullet.y) && (ent.y + 0.3/2 >= bullet.y) && ((bullet.x) <= ((ent.x + 0.3/2)))  && ((bullet.x) >= ((ent.x - 0.3/2)))){
+    if ((ent.y - 0.0786241/2 <= bullet.y + 0.0905/2) && (ent.y + 0.0786241/2 >= bullet.y - 0.0905/2) && ((bullet.x - 0.0103/2) <= ((ent.x + 0.356564/2)))  && ((bullet.x + 0.0103/2) >= ((ent.x - 0.0356564/2)))){
          std::cout << "Target Hit" << std::endl;
         score += 100;
         ent.display = false;
